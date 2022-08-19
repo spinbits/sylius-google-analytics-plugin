@@ -1,0 +1,8 @@
+2022-08-19 10:18:07,649 INFO Set uid to user 0 succeeded
+2022-08-19 10:18:07,652 INFO supervisord started with pid 1
+2022-08-19 10:18:08,655 INFO spawned: 'nginx' with pid 7
+2022-08-19 10:18:08,657 INFO spawned: 'php-fpm' with pid 8
+2022-08-19 10:18:09,697 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-08-19 10:18:09,697 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-08-19 10:31:36,652 INFO reaped unknown pid 776 (exit status 0)
+2022-08-19 10:31:58,678 INFO reaped unknown pid 809 (exit status 0)
