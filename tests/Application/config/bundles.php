@@ -45,7 +45,7 @@ return [
     Sylius\Bundle\ThemeBundle\SyliusThemeBundle::class => ['all' => true],
     Sylius\Bundle\AdminBundle\SyliusAdminBundle::class => ['all' => true],
     Sylius\Bundle\ShopBundle\SyliusShopBundle::class => ['all' => true],
-    Acme\SyliusExamplePlugin\AcmeSyliusExamplePlugin::class => ['all' => true],
+    Spinbits\SyliusGoogleAnalytics4Plugin\SpinbitsSyliusGoogleAnalytics4Plugin::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true, 'test_cached' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true, 'test_cached' => true],
     FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true, 'test_cached' => true],
@@ -57,4 +57,6 @@ return [
     BabDev\PagerfantaBundle\BabDevPagerfantaBundle::class => ['all' => true],
     SyliusLabs\Polyfill\Symfony\Security\Bundle\SyliusLabsPolyfillSymfonySecurityBundle::class => ['all' => true],
     Sylius\Calendar\SyliusCalendarBundle::class => ['all' => true],
+    Xynnn\GoogleTagManagerBundle\GoogleTagManagerBundle::class => ['all' => true],
+    GtmPlugin\GtmPlugin::class => ['all' => true],
 ];

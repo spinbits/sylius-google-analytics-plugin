@@ -2,3 +2,16 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en_US
+
+google_tag_manager:
+    enabled: true
+    id: "GTM-XXXXXX"
+    autoAppend: false
+
+gtm:
+    inject: true
+    features:
+        environment: true
+        route: true
+        context: true
+        events: true

@@ -1,16 +1,12 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "spinbits/google-analytics-4-plugin",
     "type": "sylius-plugin",
-    "description": "Acme example plugin for Sylius.",
-    "keywords": [
-        "sylius",
-        "sylius-plugin"
-    ],
+    "description": "Spinbits Google Analytics 4 plugin for Sylius.",
+    "keywords": ["sylius", "sylius-plugin", "google", "analytics", "spinbits"],
     "license": "MIT",
     "require": {
         "php": "^8.0",
         "sylius/sylius": "^1.11.6",
-        "xynnn/google-tag-manager-bundle": "^3.1",
         "stefandoorn/google-tag-manager-plugin": "^1.1"
     },
     "require-dev": {
@@ -60,8 +56,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Acme\\SyliusExamplePlugin\\": "src/",
-            "Tests\\Acme\\SyliusExamplePlugin\\": "tests/"
+            "Spinbits\\SyliusGoogleAnalytics4Plugin\\": "src/",
+            "Tests\\Spinbits\\SyliusGoogleAnalytics4Plugin\\": "tests/"
         }
     },
     "autoload-dev": {

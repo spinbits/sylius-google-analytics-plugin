@@ -15,24 +15,39 @@ there you will find the <a href="https://docs.sylius.com/en/latest/plugin-develo
 
 ## Quickstart Installation
 
-### Traditional
-
-1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
-
-2. From the plugin skeleton root directory, run the following commands:
+1. Install plugin:
 
     ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && APP_ENV=test bin/console assets:install public)
-    
-    $ (cd tests/Application && APP_ENV=test bin/console doctrine:database:create)
-    $ (cd tests/Application && APP_ENV=test bin/console doctrine:schema:create)
+    composer require spinbits/sylius-google-analytics4-plugin
     ```
 
-To be able to set up a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
+2. Add to bundles.php
 
-### Docker
+    ```php
+        Xynnn\GoogleTagManagerBundle\GoogleTagManagerBundle::class => ['all' => true],
+        GtmPlugin\GtmPlugin::class => ['all' => true],
+        Spinbits\SyliusGoogleAnalytics4Plugin\SpinbitsSyliusGoogleAnalytics4Plugin::class => ['all' => true],
+    ```
+
+3. Add configuration to `config/services.yaml`
+
+    ```yaml
+    google_tag_manager:
+        enabled: true
+        id: "GTM-XXXXXX"
+        autoAppend: false
+    
+    gtm:
+        inject: true
+        features:
+            environment: true
+            route: true
+            context: true
+            events: true
+    ```
+
+
+### Develop
 
 1. Execute `docker compose up -d`
 
