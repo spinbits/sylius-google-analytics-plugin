@@ -34,3 +34,6 @@ ci: init phpstan psalm phpunit phpspec behat
 integration: init phpunit behat
 
 static: install phpspec phpstan psalm
+
+bash:
+	docker exec -it sylius-google-analytics4-plugin_app_1 /bin/sh
