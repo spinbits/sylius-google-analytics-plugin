@@ -45,6 +45,9 @@ there you will find the <a href="https://docs.sylius.com/en/latest/plugin-develo
             context: true
             events: true
     ```
+4. Copy templates to render GTM code
+
+`cp ./vendor/spinbits/sylius-google-analytics4-plugin/templates/* ./templates/`
 
 
 ### Develop
