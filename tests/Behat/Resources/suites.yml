@@ -2,4 +2,9 @@
 
 default:
     suites:
+        gtm:
+            contexts:
+                - spinbits_sylius_google_analytics4_plugin.context.ui.shop.gtm
 
+            filters:
+                tags: "@gtm"
