@@ -45,6 +45,6 @@ class EventResolver
     {
         $routeName = $request->attributes->get('_route');
 
-        return (string) $this->routesEventsMap[$routeName] ?? $routeName;
+        return isset($this->routesEventsMap[$routeName]) ? $this->routesEventsMap[$routeName] : $routeName;
     }
 }
