@@ -31,6 +31,9 @@ class EventResolver
         'sylius_shop_product_index' => 'view_item_list'
     ];
 
+    /**
+     * @var array|string[] routesEventsMap
+     */
     private array $routesEventsMap;
 
     public function __construct(array $routesEventsMap = [])
@@ -42,6 +45,6 @@ class EventResolver
     {
         $routeName = $request->attributes->get('_route');
 
-        return self::DEFAULT_MAP[$routeName] ?? $routeName;
+        return $this->routesEventsMap[$routeName] ?? $routeName;
     }
 }
