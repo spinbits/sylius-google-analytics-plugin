@@ -1,0 +1,19 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Spinbits\SyliusGoogleAnalytics4Plugin\:
+        resource: '../../'
+        exclude:
+            - '../../DependencyInjection/'
+            - '../../Entity/'
+            - '../../Kernel.php'
+
+    spinbits.google_analytics4_plugin.request_listener:
+        class: Spinbits\SyliusGoogleAnalytics4Plugin\EventListener\RequestListener
+        arguments:
+            $googleTagManager: '@google_tag_manager'
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
