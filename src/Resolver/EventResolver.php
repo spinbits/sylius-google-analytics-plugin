@@ -43,7 +43,7 @@ class EventResolver
 
     public function resolve(Request $request): string
     {
-        $routeName = $request->attributes->get('_route');
+        $routeName = (string) $request->attributes->get('_route');
 
         return isset($this->routesEventsMap[$routeName]) ? $this->routesEventsMap[$routeName] : $routeName;
     }
