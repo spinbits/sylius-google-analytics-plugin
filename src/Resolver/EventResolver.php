@@ -43,6 +43,9 @@ class EventResolver
 
     public function resolve(Request $request): string
     {
+        /**
+         * @psalm-suppress MixedArgument
+         */
         $routeName = strval($request->attributes->get('_route'));
 
         return (string) ($this->routesEventsMap[$routeName] ?? $routeName);
