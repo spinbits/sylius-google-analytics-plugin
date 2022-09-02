@@ -5,7 +5,7 @@ parameters:
 
 google_tag_manager:
     enabled: true
-    id: "GTM-5V9TKGP"
+    id: "G-WX1RJ8SP3R"
     autoAppend: false
 
 gtm:
