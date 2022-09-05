@@ -55,6 +55,6 @@ class ViewItemListTest extends TestCase
         $result = json_encode($this->sut);
 
         $expected = '{"item_list_id":"list_id","item_list_name":"list_name","items":[null,null]}';
-        $this->assertSame($expected, $result);
+        $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }

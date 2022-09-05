@@ -53,6 +53,6 @@ class BeginCheckoutTest extends TestCase
         $result = json_encode($this->sut);
 
         $expected = '{"coupon":"coupon_name","currency":"USD","value":2,"items":[null,null]}';
-        $this->assertSame($expected, $result);
+        $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }

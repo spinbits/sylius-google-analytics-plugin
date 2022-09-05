@@ -52,6 +52,6 @@ class PurchaseTest extends TestCase
         $result = json_encode($this->sut);
 
         $expected = '{"transaction_id":"some_unique_trans_id","currency":"USD","value":2,"items":[null,null]}';
-        $this->assertSame($expected, $result);
+        $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }

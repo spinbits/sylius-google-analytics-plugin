@@ -58,6 +58,6 @@ class ViewPromotionTest extends TestCase
         $result = json_encode($this->sut);
 
         $expected = '{"creative_name":"name","creative_slot":"slot","location_id":"id","promotion_id":"promo_id","promotion_name":"promo_name","items":[null,null]}';
-        $this->assertSame($expected, $result);
+        $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }

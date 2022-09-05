@@ -55,6 +55,6 @@ class AddPaymentInfoTest extends TestCase
         $result = json_encode($this->sut);
 
         $expected = '{"coupon":"some_coupon","payment_type":"pay_type","currency":"USD","value":2,"items":[null,null]}';
-        $this->assertSame($expected, $result);
+        $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }
