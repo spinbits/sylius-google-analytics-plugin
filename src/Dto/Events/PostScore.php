@@ -17,8 +17,8 @@ class PostScore implements \JsonSerializable
     use JsonSerializeTrait;
 
     private float $score;
-    private ?float $level;
-    private ?string $character;
+    private ?float $level = null;
+    private ?string $character = null;
 
     /**
      * @param float $score

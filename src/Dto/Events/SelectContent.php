@@ -16,8 +16,8 @@ class SelectContent implements \JsonSerializable
 {
     use JsonSerializeTrait;
 
-    private ?string $content_type;
-    private ?string $item_id;
+    private ?string $content_type = null;
+    private ?string $item_id = null;
 
     public function getName(): string
     {

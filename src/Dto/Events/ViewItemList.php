@@ -46,5 +46,8 @@ class ViewItemList extends ItemsContainerEvent implements \JsonSerializable
         return $this;
     }
 
-    protected function calculate(Item $item){}
+    /**
+     * {@inheritDoc}
+     */
+    protected function calculate(Item $item): void{}
 }

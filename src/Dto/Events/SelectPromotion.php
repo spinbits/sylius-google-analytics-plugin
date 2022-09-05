@@ -12,12 +12,11 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
 class SelectPromotion
 {
-    private $creative_name;
-    private $creative_slot;
-    private $location_id;
-    private $promotion_id;
-    private $promotion_name;
-    private array $items = [];
+    private ?string $creative_name = null;
+    private ?string $creative_slot = null;
+    private ?string $location_id = null;
+    private ?string $promotion_id = null;
+    private ?string  $promotion_name = null;
 
     public function getName(): string
     {

@@ -12,9 +12,13 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
 
 trait JsonSerializeTrait
 {
-    public function jsonSerialize()
+    /**
+     * @psalm-suppress MixedAssignment
+     */
+    public function jsonSerialize(): mixed
     {
         $result = [];
+        /** @var mixed $value */
         foreach (get_object_vars($this) as $key => $value) {
             if ($value instanceof \JsonSerializable) {
                 $result[$key] = $value->jsonSerialize();

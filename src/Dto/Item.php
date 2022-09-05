@@ -22,11 +22,11 @@ class Item implements \JsonSerializable
     private ?float $discount;
     private ?int $index;
     private ?string $item_brand;
-    private ?string $item_category;
-    private ?string $item_category2;
-    private ?string $item_category3;
-    private ?string $item_category4;
-    private ?string $item_category5;
+    private ?string $item_category = null;
+    private ?string $item_category2 = null;
+    private ?string $item_category3 = null;
+    private ?string $item_category4 = null;
+    private ?string $item_category5 = null;
     private ?string $item_list_id;
     private ?string $item_list_name;
     private ?string $item_variant;
@@ -67,11 +67,11 @@ class Item implements \JsonSerializable
         $this->quantity = $quantity;
 
         if (is_array($item_category)) {
-            $this->item_category = array_shift($item_category);
-            $this->item_category2 = array_shift($item_category);
-            $this->item_category3 = array_shift($item_category);
-            $this->item_category4 = array_shift($item_category);
-            $this->item_category5 = array_shift($item_category);
+            $this->item_category = (string) array_shift($item_category);
+            $this->item_category2 = (string) array_shift($item_category);
+            $this->item_category3 = (string) array_shift($item_category);
+            $this->item_category4 = (string) array_shift($item_category);
+            $this->item_category5 = (string) array_shift($item_category);
         }
     }
 

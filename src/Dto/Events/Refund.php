@@ -12,16 +12,13 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
 class Refund
 {
-    private string $currency;
-    private $transaction_id;
-    private float $value;
-    private $affiliation;
-    private ?string $coupon;
-    private $shipping;
-    private $tax;
-    private array $items = [];
+    private ?string $transaction_id = null;
+    private ?string $affiliation = null;
+    private ?string $coupon = null;
+    private ?float $shipping = null;
+    private ?float $tax = null;
 
-    private $isFullRefund = false;
+    private bool $isFullRefund = false;
 
     public function getName(): string
     {

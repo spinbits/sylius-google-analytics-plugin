@@ -46,9 +46,10 @@ class ItemsContainerEvent implements ItemsContainerInterface
 
     /**
      * @param Item $item
+     * @return void
      * @throws CurrencyNotValidException
      */
-    protected function calculate(Item $item)
+    protected function calculate(Item $item): void
     {
         if ($this->currency === null and count($this->items) === 0) {
             $this->currency = $item->getCurrency();
@@ -59,6 +60,6 @@ class ItemsContainerEvent implements ItemsContainerInterface
         }
         $this->currency = $item->getCurrency();
 
-        $this->value = round($this->value + $item->getPrice() - $item->getDiscount(), 2);
+        $this->value = round((float) $this->value + (float) $item->getPrice() - (float) $item->getDiscount(), 2);
     }
 }
