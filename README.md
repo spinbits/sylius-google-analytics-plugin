@@ -24,7 +24,6 @@ Implemented events: https://developers.google.com/analytics/devguides/collection
 
     ```php
         Xynnn\GoogleTagManagerBundle\GoogleTagManagerBundle::class => ['all' => true],
-        GtmPlugin\GtmPlugin::class => ['all' => true],
         Spinbits\SyliusGoogleAnalytics4Plugin\SpinbitsSyliusGoogleAnalytics4Plugin::class => ['all' => true],
     ```
 

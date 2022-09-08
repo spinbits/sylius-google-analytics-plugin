@@ -10,8 +10,13 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
-class SelectPromotion
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
+
+class SelectPromotion implements EventInterface
 {
+    use JsonSerializeTrait;
+
     private ?string $creative_name = null;
     private ?string $creative_slot = null;
     private ?string $location_id = null;

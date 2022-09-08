@@ -10,8 +10,13 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
-class Refund
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
+
+class Refund implements EventInterface
 {
+    use JsonSerializeTrait;
+
     private ?string $transaction_id = null;
     private ?string $affiliation = null;
     private ?string $coupon = null;

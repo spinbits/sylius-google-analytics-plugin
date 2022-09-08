@@ -10,9 +10,10 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 
-class UnlockAchievement implements \JsonSerializable
+class UnlockAchievement implements \JsonSerializable, EventInterface
 {
     use JsonSerializeTrait;
 

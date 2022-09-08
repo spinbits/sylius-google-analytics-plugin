@@ -12,7 +12,6 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ItemsContainerEventTest extends TestCase
@@ -35,7 +34,9 @@ class ItemsContainerEventTest extends TestCase
         $this->sut->addItem($item);
         $this->sut->addItem($item);
 
-        $this->assertSame('USD', $this->sut->getCurrency());
-        $this->assertSame(3.6, $this->sut->getValue());
+        $result = $this->sut->jsonSerialize();
+
+        $this->assertSame('USD', $result['currency']);
+        $this->assertSame(3.6, (float) $result['value']);
     }
 }

@@ -10,11 +10,12 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
 
-class ViewPromotion extends ItemsContainerEvent implements \JsonSerializable
+class ViewPromotion extends ItemsContainerEvent implements \JsonSerializable, EventInterface
 {
     use JsonSerializeTrait;
 

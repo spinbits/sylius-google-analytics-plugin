@@ -58,5 +58,4 @@ return [
     SyliusLabs\Polyfill\Symfony\Security\Bundle\SyliusLabsPolyfillSymfonySecurityBundle::class => ['all' => true],
     Sylius\Calendar\SyliusCalendarBundle::class => ['all' => true],
     Xynnn\GoogleTagManagerBundle\GoogleTagManagerBundle::class => ['all' => true],
-    GtmPlugin\GtmPlugin::class => ['all' => true],
 ];

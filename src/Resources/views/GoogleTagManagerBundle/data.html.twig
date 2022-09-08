@@ -2,7 +2,21 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){window.dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '{{ id }}'); {% if data is not null %}
-    gtag({{ data|json_encode|raw }});
-{% endif %}
+    gtag('config', '{{ id }}');
+    if (window.performance) {
+        gtag('event', 'timing_complete', {
+            'name': 'load',
+            'value': Math.round(performance.now()),
+            'event_category': 'JS Dependencies'
+        });
+    }
+    {% if app.session is not null and app.session.started %}
+        {% set events = app.session.bag('spinbits_ga4_events').all %}
+        {% for event, content in events %}
+            {% for c in content %}
+                gtag("event", "{{ event }}", {{ c|raw }});
+            {% endfor %}
+        {% endfor %}
+        console.log({{ events|json_encode|raw }})
+    {% endif %}
 </script>

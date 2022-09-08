@@ -141,18 +141,6 @@
             "tests/bootstrap.php"
         ]
     },
-    "sensiolabs/security-checker": {
-        "version": "6.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "4.0",
-            "ref": "160c9b600564faa1224e8f387d49ef13ceb8b793"
-        },
-        "files": [
-            "config/packages/security_checker.yaml"
-        ]
-    },
     "sonata-project/block-bundle": {
         "version": "4.16",
         "recipe": {
@@ -188,9 +176,6 @@
             "version": "3.6",
             "ref": "1019e5c08d4821cb9b77f4891f8e9c31ff20ac6f"
         }
-    },
-    "stefandoorn/google-tag-manager-plugin": {
-        "version": "v1.1.0"
     },
     "stof/doctrine-extensions-bundle": {
         "version": "1.7",

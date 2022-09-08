@@ -6,12 +6,3 @@ parameters:
 google_tag_manager:
     enabled: true
     id: "G-WX1RJ8SP3R"
-    autoAppend: false
-
-gtm:
-    inject: true
-    features:
-        environment: true
-        route: true
-        context: true
-        events: true

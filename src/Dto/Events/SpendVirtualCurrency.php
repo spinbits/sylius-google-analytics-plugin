@@ -10,9 +10,10 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 
-class SpendVirtualCurrency implements \JsonSerializable
+class SpendVirtualCurrency implements \JsonSerializable, EventInterface
 {
     use JsonSerializeTrait;
 
@@ -30,6 +31,10 @@ class SpendVirtualCurrency implements \JsonSerializable
         $this->value = $value;
     }
 
+    public function getName(): string
+    {
+        return 'spend_virtual_currency';
+    }
 
     /**
      * @param string $item_name

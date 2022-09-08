@@ -12,36 +12,25 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Exception\CurrencyNotValidException;
 
-class ItemsContainerEvent implements ItemsContainerInterface
+class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
 {
+    use JsonSerializeTrait;
+
     protected ?string $currency = null;
     protected ?float $value = null;
     protected array $items = [];
 
     /**
-     * @return string|null
-     */
-    public function getCurrency(): ?string
-    {
-        return $this->currency;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getValue(): ?float
-    {
-        return $this->value;
-    }
-
-    /**
      * @param Item $item
      * @throws CurrencyNotValidException
+     * @return self
      */
-    public function addItem(Item $item): void
+    public function addItem(Item $item): self
     {
         $this->calculate($item);
         $this->items[] = $item;
+
+        return $this;
     }
 
     /**
@@ -60,6 +49,7 @@ class ItemsContainerEvent implements ItemsContainerInterface
         }
         $this->currency = $item->getCurrency();
 
-        $this->value = round((float) $this->value + (float) $item->getPrice() - (float) $item->getDiscount(), 2);
+        $value = (float) $this->value + ((float) $item->getPrice() - (float) $item->getDiscount()) * $item->getQuantity();
+        $this->value = round($value, 2);
     }
 }

@@ -10,7 +10,9 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
 
-interface ItemsContainerInterface
+interface EventInterface
 {
-    public function addItem(Item $item): self;
+    public function getName(): string;
+
+    public function jsonSerialize(): mixed;
 }
