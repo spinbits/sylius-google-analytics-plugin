@@ -13,6 +13,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\JoinGroup;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
 
 class JoinGroupTest extends TestCase
 {
@@ -32,7 +33,7 @@ class JoinGroupTest extends TestCase
 
     public function testSerializeMockItem()
     {
-        $item=$this->createMock(Item::class);
+        $item=$this->createMock(ItemInterface::class);
 
         $this->sut->setGroupId('example');
 

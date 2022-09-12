@@ -3,6 +3,6 @@
 parameters:
     locale: en_US
 
-google_tag_manager:
+spinbits_sylius_google_analytics4:
     enabled: true
     id: "G-WX1RJ8SP3R"

@@ -13,6 +13,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\BeginCheckout;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
 
 class BeginCheckoutTest extends TestCase
 {
@@ -32,7 +33,7 @@ class BeginCheckoutTest extends TestCase
 
     public function testSerializeMockItem()
     {
-        $item=$this->createMock(Item::class);
+        $item=$this->createMock(ItemInterface::class);
 
         $item->expects($this->any())
             ->method('getCurrency')
@@ -40,11 +41,15 @@ class BeginCheckoutTest extends TestCase
 
         $item->expects($this->any())
             ->method('getPrice')
-            ->willReturn('1.23');
+            ->willReturn(1.23);
 
         $item->expects($this->any())
             ->method('getDiscount')
-            ->willReturn('0.23');
+            ->willReturn(0.23);
+
+        $item->expects($this->any())
+            ->method('getQuantity')
+            ->willReturn(1);
 
         $this->sut->addItem($item);
         $this->sut->addItem($item);
@@ -52,7 +57,7 @@ class BeginCheckoutTest extends TestCase
 
         $result = json_encode($this->sut);
 
-        $expected = '{"coupon":"coupon_name","currency":"USD","value":2,"items":[null,null]}';
+        $expected = '{"coupon":"coupon_name","currency":"USD","value":2,"items":[{},{}]}';
         $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }

@@ -13,6 +13,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItemList;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
 
 class ViewItemListTest extends TestCase
 {
@@ -32,7 +33,7 @@ class ViewItemListTest extends TestCase
 
     public function testSerializeMockItem()
     {
-        $item=$this->createMock(Item::class);
+        $item=$this->createMock(ItemInterface::class);
 
         $item->expects($this->any())
             ->method('getCurrency')
@@ -40,11 +41,15 @@ class ViewItemListTest extends TestCase
 
         $item->expects($this->any())
             ->method('getPrice')
-            ->willReturn('1.23');
+            ->willReturn(1.23);
 
         $item->expects($this->any())
             ->method('getDiscount')
-            ->willReturn('0.23');
+            ->willReturn(0.23);
+
+        $item->expects($this->any())
+            ->method('getQuantity')
+            ->willReturn(1);
 
         $this->sut->addItem($item);
         $this->sut->addItem($item);
@@ -54,7 +59,7 @@ class ViewItemListTest extends TestCase
 
         $result = json_encode($this->sut);
 
-        $expected = '{"item_list_id":"list_id","item_list_name":"list_name","items":[null,null]}';
+        $expected = '{"item_list_id":"list_id","item_list_name":"list_name","items":[{},{}]}';
         $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }

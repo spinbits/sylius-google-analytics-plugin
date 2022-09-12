@@ -13,6 +13,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\SelectItem;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
 
 class SelectItemTest extends TestCase
 {
@@ -32,7 +33,7 @@ class SelectItemTest extends TestCase
 
     public function testSerializeMockItem()
     {
-        $item=$this->createMock(Item::class);
+        $item=$this->createMock(ItemInterface::class);
 
         $this->sut->addItem($item);
         $this->sut->setItemListId('list_id');
@@ -40,7 +41,7 @@ class SelectItemTest extends TestCase
 
         $result = json_encode($this->sut);
 
-        $expected = '{"item_list_id":"list_id","item_list_name":"list_name","items":[null]}';
+        $expected = '{"item_list_id":"list_id","item_list_name":"list_name","items":[{}]}';
         $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }

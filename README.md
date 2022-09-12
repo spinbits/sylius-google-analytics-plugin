@@ -3,7 +3,7 @@
 
 ## Overview
 
-This plugin is used to connect Sylius with Google Analytics 4 using Google Tag Manager (gtag.js). 
+This plugin is used to connect Sylius with [Google Analytics 4](https://developers.google.com/analytics/devguides/collection/ga4) using Google Tag Manager ([gtag.js](https://developers.google.com/tag-platform/gtagjs/reference)). 
 It integrates with all ecommerce GA4 [events](https://developers.google.com/analytics/devguides/collection/ga4/reference/events). 
 Additionaly it measures page load time and post it as event to GA4.
 
@@ -22,6 +22,13 @@ Additionaly it measures page load time and post it as event to GA4.
 |login|A user logged in to the shop|
 |signup|A user signup in to the shop|
 |timing_complete| Measures page load time|
+
+## Links
+https://support.google.com/tagmanager/answer/6103696?hl=pl&ref_topic=3441530
+https://developers.google.com/analytics/devguides/collection/protocol/ga4
+https://ga-dev-tools.web.app/ga4/event-builder/
+https://support.google.com/tagassistant/answer/10042782
+https://tagassistant.google.com/
 
 ## Details
 It is designed based on backend Sylius events for high compatibility no matter what template your Sylius store is using.

@@ -13,6 +13,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\AddShippingInfo;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
 
 class AddShippingInfoTest extends TestCase
 {
@@ -32,7 +33,7 @@ class AddShippingInfoTest extends TestCase
 
     public function testSerializeMockItem()
     {
-        $item=$this->createMock(Item::class);
+        $item=$this->createMock(ItemInterface::class);
 
         $item->expects($this->any())
             ->method('getCurrency')
@@ -40,11 +41,15 @@ class AddShippingInfoTest extends TestCase
 
         $item->expects($this->any())
             ->method('getPrice')
-            ->willReturn('1.23');
+            ->willReturn(1.23);
 
         $item->expects($this->any())
             ->method('getDiscount')
-            ->willReturn('0.23');
+            ->willReturn(0.23);
+
+        $item->expects($this->any())
+            ->method('getQuantity')
+            ->willReturn(1);
 
         $this->sut->addItem($item);
         $this->sut->addItem($item);
@@ -54,7 +59,7 @@ class AddShippingInfoTest extends TestCase
 
         $result = json_encode($this->sut);
 
-        $expected = '{"coupon":"some_coupon","shipping_tier":"tier","currency":"USD","value":2,"items":[null,null]}';
+        $expected = '{"coupon":"some_coupon","shipping_tier":"tier","currency":"USD","value":2,"items":[{},{}]}';
         $this->assertEqualsCanonicalizing(json_decode($expected, true), json_decode($result, true));
     }
 }
