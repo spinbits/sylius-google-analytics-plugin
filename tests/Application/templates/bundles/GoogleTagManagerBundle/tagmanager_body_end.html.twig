@@ -1,7 +1,0 @@
-{% if push is not null %}
-    {% for val in push %}
-        <script type="text/javascript">
-            gtag({{ val|json_encode|raw }});
-        </script>
-    {% endfor %}
-{% endif %}

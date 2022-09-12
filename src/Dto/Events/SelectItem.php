@@ -12,6 +12,7 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 
@@ -50,5 +51,5 @@ class SelectItem extends ItemsContainerEvent implements \JsonSerializable, Event
     /**
      * {@inheritDoc}
      */
-    protected function calculate(Item $item): void{}
+    protected function calculate(ItemInterface $item): void{}
 }

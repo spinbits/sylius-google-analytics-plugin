@@ -14,8 +14,16 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('spinbits_ga4_plugin');
+        $treeBuilder = new TreeBuilder('spinbits_sylius_google_analytics4');
         $rootNode = $treeBuilder->getRootNode();
+
+        $rootNode
+            ->children()
+            ->scalarNode('id')->end()
+            ->booleanNode('enabled')->defaultTrue()->end()
+            ->scalarNode('additionalParameters')->defaultValue('')->end()
+            ->scalarNode('templateName')->defaultValue('@SpinbitsSyliusGoogleAnalytics4Plugin/tagmanager_head.html.twig')->end()
+            ->end();
 
         return $treeBuilder;
     }

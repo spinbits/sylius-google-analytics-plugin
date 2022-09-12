@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Storage;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class EventsBag extends FlashBag
@@ -23,9 +25,19 @@ class EventsBag extends FlashBag
         $this->setName($storageKey);
     }
 
-    public function addEvent(EventInterface $event): void
+    public function setEvent(EventInterface $event): void
     {
-        $this->add($event->getName(), (string) json_encode($event));
+        $this->set($event->getName(), [$event]);
+    }
+
+    public function appendEventItem($eventName, Item $item): void
+    {
+        foreach ($this->peek($eventName) as $events) {
+            if ($events[0] instanceof ItemsContainerEvent) {
+                $events[0]->addItem($item);
+                $this->set($eventName, $events);
+            }
+        }
     }
 
     public function getEvents(): array

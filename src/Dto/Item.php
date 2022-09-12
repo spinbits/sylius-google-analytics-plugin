@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
 
-class Item implements \JsonSerializable
+class Item implements \JsonSerializable, ItemInterface
 {
     use JsonSerializeTrait;
 
@@ -41,7 +41,7 @@ class Item implements \JsonSerializable
         string $currency,
         ?string $affiliation = null,
         ?string $coupon = null,
-        ?float $discount = 0,
+        float $discount = 0,
         ?int $index = null,
         ?string $item_brand = null,
         ?array $item_category = null,
@@ -49,7 +49,7 @@ class Item implements \JsonSerializable
         ?string $item_list_name = null,
         ?string $item_variant = null,
         ?string $location_id = null,
-        ?int $quantity = 1
+        int $quantity = 1
     ) {
         $this->item_id = $item_id;
         $this->item_name = $item_name;
@@ -67,42 +67,42 @@ class Item implements \JsonSerializable
         $this->quantity = $quantity;
 
         if (is_array($item_category)) {
-            $this->item_category = (string) array_shift($item_category);
-            $this->item_category2 = (string) array_shift($item_category);
-            $this->item_category3 = (string) array_shift($item_category);
-            $this->item_category4 = (string) array_shift($item_category);
-            $this->item_category5 = (string) array_shift($item_category);
+            $this->item_category = (count($item_category)>0) ? (string) array_shift($item_category) : null;
+            $this->item_category2 = (count($item_category)>0) ? (string) array_shift($item_category) : null;
+            $this->item_category3 = (count($item_category)>0) ? (string) array_shift($item_category) : null;
+            $this->item_category4 = (count($item_category)>0) ? (string) array_shift($item_category) : null;
+            $this->item_category5 = (count($item_category)>0) ? (string) array_shift($item_category) : null;
         }
     }
 
     /**
-     * @return float|float|null
+     * @return float
      */
-    public function getDiscount()
+    public function getDiscount(): float
     {
         return $this->discount;
     }
 
     /**
-     * @return float|float|null
+     * @return float
      */
-    public function getPrice()
+    public function getPrice(): float
     {
         return $this->price;
     }
 
     /**
-     * @return int|int|null
+     * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
 
     /**
-     * @return string|string|null
+     * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }

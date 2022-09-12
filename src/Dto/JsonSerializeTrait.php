@@ -12,6 +12,11 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
 
 trait JsonSerializeTrait
 {
+    public function __toString()
+    {
+        return (string) json_encode($this);
+    }
+
     /**
      * @psalm-suppress MixedAssignment
      */

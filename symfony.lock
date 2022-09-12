@@ -393,8 +393,5 @@
     },
     "winzou/state-machine-bundle": {
         "version": "0.5.1"
-    },
-    "xynnn/google-tag-manager-bundle": {
-        "version": "3.1.1"
     }
 }

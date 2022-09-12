@@ -11,9 +11,11 @@ declare(strict_types=1);
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\PromotionItem;
 
 class ViewPromotion extends ItemsContainerEvent implements \JsonSerializable, EventInterface
 {
@@ -81,7 +83,7 @@ class ViewPromotion extends ItemsContainerEvent implements \JsonSerializable, Ev
     }
 
     /**
-     * {@inheritDoc}
+     * @param PromotionItem|ItemInterface $item
      */
-    protected function calculate(Item $item): void{}
+    protected function calculate(ItemInterface $item): void{}
 }

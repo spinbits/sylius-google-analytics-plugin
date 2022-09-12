@@ -21,11 +21,11 @@ class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
     protected array $items = [];
 
     /**
-     * @param Item $item
+     * @param ItemInterface $item
      * @throws CurrencyNotValidException
      * @return self
      */
-    public function addItem(Item $item): self
+    public function addItem(ItemInterface $item): self
     {
         $this->calculate($item);
         $this->items[] = $item;
@@ -34,11 +34,11 @@ class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
     }
 
     /**
-     * @param Item $item
+     * @param ItemInterface $item
      * @return void
      * @throws CurrencyNotValidException
      */
-    protected function calculate(Item $item): void
+    protected function calculate(ItemInterface $item): void
     {
         if ($this->currency === null and count($this->items) === 0) {
             $this->currency = $item->getCurrency();

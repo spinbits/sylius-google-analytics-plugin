@@ -21,10 +21,19 @@ final class SpinbitsSyliusGoogleAnalytics4Extension extends Extension
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+
+        foreach ($config as $name => $node) {
+            $container->setParameter($this->getAlias() . '.' . $name, $node);
+        }
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container): ConfigurationInterface
     {
         return new Configuration();
+    }
+
+    public function getAlias()
+    {
+        return 'spinbits_sylius_google_analytics4';
     }
 }

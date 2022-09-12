@@ -11,32 +11,21 @@ services:
             - '../../Entity/'
             - '../../Kernel.php'
 
-    sylius.google_tag_manager.block_event_listener.layout.before_head:
-        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+    Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory:
         arguments:
-            - 'head.html.twig'
+            $id: '%spinbits_sylius_google_analytics4.id%'
+            $enabled: '%spinbits_sylius_google_analytics4.enabled%'
+            $additionalParams: '%spinbits_sylius_google_analytics4.additionalParameters%'
+            $templateName: '%spinbits_sylius_google_analytics4.templateName%'
+            
+    Spinbits\SyliusGoogleAnalytics4Plugin\EventListener\RenderViewListener:
         tags:
-            - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.layout.head, method: onBlockEvent }
-
-    sylius.google_tag_manager.block_event_listener.layout.before_body:
-        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
-        arguments:
-            - 'body.html.twig'
-        tags:
-            - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.layout.before_body, method: onBlockEvent }
-
-    sylius.google_tag_manager.block_event_listener.layout.after_body:
-        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
-        arguments:
-            - 'after_body.html.twig'
-        tags:
-            - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.layout.after_body, method: onBlockEvent }
-
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+            
     Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory:
         arguments:
             $productVariantResolver: '@sylius.product_variant_resolver.default'
             
-                
     Spinbits\SyliusGoogleAnalytics4Plugin\Storage\SessionFactoryWithEventsBag:
         decorates: session.factory
         arguments: ['@.inner']
