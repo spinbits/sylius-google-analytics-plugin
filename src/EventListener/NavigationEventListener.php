@@ -50,11 +50,11 @@ class NavigationEventListener implements EventSubscriberInterface
         /**
          * @psalm-suppress MixedArgument
          */
-        $routeName = strval($event->getRequest()->attributes->get('_route'));
+        $routeName = $event->getRequest()->attributes->get('_route');
 
         if (!$event->isMainRequest()
             || !\is_array($event->getController())
-            || 'sylius_shop_product_index' != $routeName
+            || 'sylius_shop_product_index' !== $routeName
         ) {
             return;
         }
@@ -88,8 +88,9 @@ class NavigationEventListener implements EventSubscriberInterface
 
     private function getSearchTerm(Request $request): ?string
     {
-        $criteria = $request->query->get('criteria');
-        return (is_array($criteria) && isset($criteria['search']['value']))
+        /** @var array<string, array<string, string|null|int>> $criteria */
+        $criteria = (array) $request->query->get('criteria');
+        return (isset($criteria['search']['value']))
             ? (string) $criteria['search']['value']
             : null;
     }

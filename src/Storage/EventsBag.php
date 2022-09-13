@@ -30,8 +30,9 @@ class EventsBag extends FlashBag
         $this->set($event->getName(), [$event]);
     }
 
-    public function appendEventItem($eventName, Item $item): void
+    public function appendEventItem(string $eventName, Item $item): void
     {
+        /** @var array<array-key, mixed> $events */
         foreach ($this->peek($eventName) as $events) {
             if ($events[0] instanceof ItemsContainerEvent) {
                 $events[0]->addItem($item);

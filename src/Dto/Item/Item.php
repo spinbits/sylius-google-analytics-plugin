@@ -20,7 +20,7 @@ class Item implements \JsonSerializable, ItemInterface
     private string $item_name;
     private ?string $affiliation;
     private ?string $coupon;
-    private ?string $currency;
+    private string $currency;
     private ?float $discount;
     private ?int $index;
     private ?string $item_brand;
@@ -34,7 +34,7 @@ class Item implements \JsonSerializable, ItemInterface
     private ?string $item_variant;
     private ?string $location_id;
     private ?float $price;
-    private ?int $quantity;
+    private int $quantity;
 
     public function __construct(
         string $item_id,
@@ -157,7 +157,7 @@ class Item implements \JsonSerializable, ItemInterface
         return $this;
     }
 
-    public function setQuantity(?int $quantity): Item
+    public function setQuantity(int $quantity): Item
     {
         $this->quantity = $quantity;
         return $this;

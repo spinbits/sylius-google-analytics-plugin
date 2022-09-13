@@ -25,7 +25,7 @@ class RenderViewListener
         $this->renderTwig = $renderTwig;
     }
 
-    public function onKernelResponse(ResponseEvent $event)
+    public function onKernelResponse(ResponseEvent $event): void
     {
         if (!$this->isAllowed($event)) {
             return;
@@ -35,7 +35,7 @@ class RenderViewListener
             preg_replace(
                 '/<head\b[^>]*>/',
                 "$0" . $this->renderTwig->render(),
-                $event->getResponse()->getContent(),
+                (string) $event->getResponse()->getContent(),
                 1
             )
         );

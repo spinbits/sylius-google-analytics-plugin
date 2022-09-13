@@ -60,7 +60,7 @@ class Purchase extends ItemsContainerEvent implements \JsonSerializable, EventIn
      */
     public function setShipping(?float $shipping): Purchase
     {
-        $this->value -= (float) $this->shipping;
+        $this->value = (float) $this->value - (float) $this->shipping;
         $this->shipping = $shipping;
         $this->value += (float) $this->shipping;
         return $this;
@@ -72,7 +72,7 @@ class Purchase extends ItemsContainerEvent implements \JsonSerializable, EventIn
      */
     public function setTax(?float $tax): Purchase
     {
-        $this->value -= (float) $this->tax;
+        $this->value = (float) $this->value - (float) $this->tax;
         $this->tax = $tax;
         $this->value += (float) $this->tax;
         return $this;
