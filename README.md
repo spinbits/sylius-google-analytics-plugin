@@ -24,10 +24,10 @@ Additionaly it measures page load time and post it as event to GA4.
 |timing_complete| Measures page load time|
 
 ## Links
-https://support.google.com/tagmanager/answer/6103696?hl=pl&ref_topic=3441530
-https://developers.google.com/analytics/devguides/collection/protocol/ga4
-https://ga-dev-tools.web.app/ga4/event-builder/
-https://support.google.com/tagassistant/answer/10042782
+https://support.google.com/tagmanager/answer/6103696?hl=pl&ref_topic=3441530  
+https://developers.google.com/analytics/devguides/collection/protocol/ga4  
+https://ga-dev-tools.web.app/ga4/event-builder/  
+https://support.google.com/tagassistant/answer/10042782  
 https://tagassistant.google.com/
 
 ## Details

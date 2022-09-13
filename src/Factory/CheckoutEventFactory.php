@@ -56,8 +56,6 @@ class CheckoutEventFactory
     {
         /** @var OrderInterface $order */
         $order = $this->cartContext->getCart();
-        /** @var PaymentInterface|null $lastPayment */
-        $lastPayment = $order->getLastPayment();
 
         $addAddress = new AddAddressInfo();
         $addAddress->setCoupon(implode(', ', $this->getCoupons($order)));
@@ -70,7 +68,6 @@ class CheckoutEventFactory
     {
         /** @var OrderInterface $order */
         $order = $this->cartContext->getCart();
-        /** @var PaymentInterface|null $lastPayment */
         $lastPayment = $order->getLastPayment();
 
         $addPayment = new AddPaymentInfo();
@@ -111,12 +108,11 @@ class CheckoutEventFactory
 
     /**
      * @param ItemsContainerInterface $event
-     * @param Collection|OrderItemInterface[] $items
+     * @param Collection<array-key, OrderItemInterface> $items
      * @return void
      */
     private function addItems(ItemsContainerInterface $event, Collection $items): void
     {
-        /** @var OrderInterface $orderItem */
         foreach ($items as $orderItem) {
             $event->addItem(
                 $this->itemFactory->fromOrderItem($orderItem)
@@ -124,12 +120,16 @@ class CheckoutEventFactory
         }
     }
 
+    /**
+     * @param OrderInterface $order
+     * @return array<array-key, string>
+     */
     private function getCoupons(OrderInterface $order): array
     {
         $result = [];
         foreach ($order->getPromotions() as $promotion)
         {
-            $result[] = $promotion->getName();
+            $result[] = (string) $promotion->getName();
         }
 
         return $result;

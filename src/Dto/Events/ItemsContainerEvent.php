@@ -50,6 +50,6 @@ class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
             throw new CurrencyMismatchException();
         }
 
-        $this->value = round($this->value + $item->getValue(), 2);
+        $this->value = round((float) $this->value + $item->getValue(), 2);
     }
 }

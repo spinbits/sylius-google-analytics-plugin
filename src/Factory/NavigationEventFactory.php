@@ -15,6 +15,7 @@ use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItem;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItemList;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Product\Model\ProductInterface as ProdProductInterface;
 
 class NavigationEventFactory
 {
@@ -34,6 +35,12 @@ class NavigationEventFactory
         return new Search($searchTerm);
     }
 
+    /**
+     * @param array<array-key, ProductInterface> $products
+     * @param null|string $itemListId
+     * @param null|string $itemListName
+     * @return ViewItemList
+     */
     public function viewItemList(
         array $products = [],
         ?string $itemListId = null,
@@ -50,13 +57,15 @@ class NavigationEventFactory
 
     public function viewItem(ProductInterface $product): ViewItem
     {
-        return (new ViewItem())
-            ->addItem($this->itemFactory->fromProduct($product));
+        $viewItem = new ViewItem();
+        $viewItem->addItem($this->itemFactory->fromProduct($product));
+
+        return $viewItem;
     }
 
     /**
      * @param ItemsContainerInterface $event
-     * @param array|ProductInterface[] $products
+     * @param array<array-key, ProdProductInterface>|ProductInterface[] $products
      * @return void
      */
     private function addItems(ItemsContainerInterface $event, array $products): void

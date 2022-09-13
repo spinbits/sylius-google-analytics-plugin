@@ -53,12 +53,12 @@ class CheckoutEventListener implements EventSubscriberInterface
         /*
          * @psalm-suppress MixedArgument
          */
-        $routeName = strval($event->getRequest()->attributes->get('_route'));
+        $routeName = $event->getRequest()->attributes->get('_route');
 
         if (!$event->isMainRequest()
             || $event->getRequest()->getMethod() != 'GET'
             || !\is_array($event->getController())
-            || 'sylius_shop_checkout_address' != $routeName
+            || 'sylius_shop_checkout_address' !== $routeName
         ) {
             return;
         }
