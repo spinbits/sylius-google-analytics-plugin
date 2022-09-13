@@ -54,6 +54,7 @@ class ItemFactory
         /** @var Channel $channel */
         $channel = $this->channelContext->getChannel();
         /** @var ChannelPricingInterface|null $pricing */
+        /** @var ProductVariant $variant */
         $pricing = $variant->getChannelPricingForChannel($channel);
         $price = ($pricing?->getPrice() ?? $pricing?->getOriginalPrice() ?? 0) / 100;
         /** @var Product|null $product */
