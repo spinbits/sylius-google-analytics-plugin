@@ -10,11 +10,10 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
-
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Search;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItem;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItemList;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 
 class NavigationEventFactory

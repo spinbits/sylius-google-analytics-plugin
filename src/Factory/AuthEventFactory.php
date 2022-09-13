@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
-
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Login;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Signup;
 

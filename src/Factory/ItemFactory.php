@@ -10,9 +10,8 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\Item;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
-use Sylius\Component\Channel\Context\RequestBased\ChannelContext;
 use Sylius\Component\Core\Model\Channel;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
@@ -56,7 +55,8 @@ class ItemFactory
             (string) $variant->getCode(),
             $price,
             $this->currencyContext->getCurrencyCode(),
-            null,
+            0,
+            1,
             null,
             null,
             null,
@@ -66,7 +66,6 @@ class ItemFactory
             $variant->getProduct()->getMainTaxon()->getName(),
             $variant->getName(),
             $channel->getName(),
-            1,
         );
     }
 
