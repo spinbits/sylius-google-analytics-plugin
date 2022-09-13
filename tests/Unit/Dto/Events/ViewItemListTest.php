@@ -13,7 +13,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItemList;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\ItemInterface;
 
 class ViewItemListTest extends TestCase
 {
@@ -40,16 +40,8 @@ class ViewItemListTest extends TestCase
             ->willReturn('USD');
 
         $item->expects($this->any())
-            ->method('getPrice')
-            ->willReturn(1.23);
-
-        $item->expects($this->any())
-            ->method('getDiscount')
-            ->willReturn(0.23);
-
-        $item->expects($this->any())
-            ->method('getQuantity')
-            ->willReturn(1);
+            ->method('getValue')
+            ->willReturn(1.00);
 
         $this->sut->addItem($item);
         $this->sut->addItem($item);

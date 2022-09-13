@@ -13,7 +13,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Login;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\ItemInterface;
 
 class LoginTest extends TestCase
 {

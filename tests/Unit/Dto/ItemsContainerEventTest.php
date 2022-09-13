@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerEvent;
 use PHPUnit\Framework\TestCase;
 
 class ItemsContainerEventTest extends TestCase
