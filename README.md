@@ -38,7 +38,7 @@ It is designed based on backend Sylius events for high compatibility no matter w
 1. Install plugin:
 
     ```bash
-    composer require spinbits/sylius-google-analytics4-plugin
+    composer require spinbits/google-analytics-4-plugin
     ```
 
 2. Add to bundles.php
