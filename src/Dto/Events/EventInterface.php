@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
+namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
-interface ItemsContainerInterface
+interface EventInterface
 {
-    public function addItem(Item $item): self;
+    public function getName(): string;
 }

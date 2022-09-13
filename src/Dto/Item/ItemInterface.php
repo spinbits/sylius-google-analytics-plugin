@@ -8,13 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
+namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
 
 interface ItemInterface{
 
     public function getCurrency(): string;
-    public function getPrice(): float;
-    public function getDiscount(): float;
-    public function getQuantity(): int;
-
+    public function getValue(): float;
 }

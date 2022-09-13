@@ -12,12 +12,24 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 
-class AddToCart extends ItemsContainerEvent implements \JsonSerializable, EventInterface
+class AddAddressInfo extends ItemsContainerEvent implements \JsonSerializable, EventInterface
 {
     use JsonSerializeTrait;
 
+    private ?string $coupon = null;
+
     public function getName(): string
     {
-        return 'add_to_cart';
+        return 'add_address_info';
+    }
+
+    /**
+     * @param string|null $coupon
+     * @return AddAddressInfo
+     */
+    public function setCoupon(?string $coupon): AddAddressInfo
+    {
+        $this->coupon = $coupon;
+        return $this;
     }
 }

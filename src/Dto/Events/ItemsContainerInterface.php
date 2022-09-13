@@ -10,14 +10,9 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\ItemInterface;
 
-class AddToCart extends ItemsContainerEvent implements \JsonSerializable, EventInterface
+interface ItemsContainerInterface
 {
-    use JsonSerializeTrait;
-
-    public function getName(): string
-    {
-        return 'add_to_cart';
-    }
+    public function addItem(ItemInterface $item): self;
 }

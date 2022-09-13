@@ -9,9 +9,6 @@
 declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
-
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 
 class Purchase extends ItemsContainerEvent implements \JsonSerializable, EventInterface
@@ -63,7 +60,9 @@ class Purchase extends ItemsContainerEvent implements \JsonSerializable, EventIn
      */
     public function setShipping(?float $shipping): Purchase
     {
+        $this->value -= (float) $this->shipping;
         $this->shipping = $shipping;
+        $this->value += (float) $this->shipping;
         return $this;
     }
 
@@ -73,7 +72,9 @@ class Purchase extends ItemsContainerEvent implements \JsonSerializable, EventIn
      */
     public function setTax(?float $tax): Purchase
     {
+        $this->value -= (float) $this->tax;
         $this->tax = $tax;
+        $this->value += (float) $this->tax;
         return $this;
     }
 }
