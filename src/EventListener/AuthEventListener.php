@@ -14,6 +14,7 @@ use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\AuthEventFactory;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class AuthEventListener implements EventSubscriberInterface
 {
@@ -35,7 +36,8 @@ class AuthEventListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            'security.interactive_login' => 'login',
+            'sylius.user.security.implicit_login' => 'login',
+            'security.interactive_login' => 'loginInteracive',
             'sylius.customer.post_register' => 'signup',
             'sylius.shop_user.post_create' => 'signup',
         ];
@@ -49,6 +51,13 @@ class AuthEventListener implements EventSubscriberInterface
     }
 
     public function login(GenericEvent $event): void
+    {
+        $this->eventsStorage->setEvent(
+            $this->authEventFactory->login()
+        );
+    }
+
+    public function loginInteracive(InteractiveLoginEvent $event): void
     {
         $this->eventsStorage->setEvent(
             $this->authEventFactory->login()
