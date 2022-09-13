@@ -8,9 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
+namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Exception\CurrencyNotValidException;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Exception\CurrencyMismatchException;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\ItemInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 
 class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
 {
@@ -22,8 +24,8 @@ class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
 
     /**
      * @param ItemInterface $item
-     * @throws CurrencyNotValidException
      * @return self
+     * @throws CurrencyMismatchException
      */
     public function addItem(ItemInterface $item): self
     {
@@ -36,7 +38,7 @@ class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
     /**
      * @param ItemInterface $item
      * @return void
-     * @throws CurrencyNotValidException
+     * @throws CurrencyMismatchException
      */
     protected function calculate(ItemInterface $item): void
     {
@@ -45,11 +47,9 @@ class ItemsContainerEvent implements \JsonSerializable, ItemsContainerInterface
         }
 
         if ($item->getCurrency() != $this->currency) {
-            throw new CurrencyNotValidException();
+            throw new CurrencyMismatchException();
         }
-        $this->currency = $item->getCurrency();
 
-        $value = (float) $this->value + ((float) $item->getPrice() - (float) $item->getDiscount()) * $item->getQuantity();
-        $this->value = round($value, 2);
+        $this->value = round((float) $this->value + $item->getValue(), 2);
     }
 }

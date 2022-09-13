@@ -12,7 +12,6 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Events;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\GenerateLead;
 use PHPUnit\Framework\TestCase;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
 
 class GenerateLeadTest extends TestCase
 {

@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Exception;
 
 
-class CurrencyNotValidException extends \Exception
+class CurrencyMismatchException extends \Exception
 {
 
 }

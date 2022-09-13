@@ -34,10 +34,12 @@ class CartEventFactory
 
     public function addToCart(OrderItemInterface $orderItem): AddToCart
     {
-        return (new AddToCart())
-            ->addItem(
+        $addToCart = new AddToCart();
+        $addToCart->addItem(
                 $this->itemFactory->fromOrderItem($orderItem)
             );
+
+        return $addToCart;
     }
 
     public function viewCart(): ViewCart
@@ -54,9 +56,11 @@ class CartEventFactory
 
     public function removeFromCart(OrderItemInterface $orderItem): RemoveFromCart
     {
-        return (new RemoveFromCart())
-            ->addItem(
-                $this->itemFactory->fromOrderItem($orderItem)
-            );
+        $removeFromCart = new RemoveFromCart();
+        $removeFromCart->addItem(
+            $this->itemFactory->fromOrderItem($orderItem)
+        );
+
+        return $removeFromCart;
     }
 }

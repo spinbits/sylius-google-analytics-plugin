@@ -13,7 +13,10 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\CheckoutEventFactory;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Sylius\Component\Core\Model\Order;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 
 class CheckoutEventListener implements EventSubscriberInterface
 {
@@ -35,29 +38,51 @@ class CheckoutEventListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            'sylius.order.post_address' => 'beginCheckout',
+            'kernel.controller_arguments' => 'onKernelRequest',//beginCheckout
+            'sylius.order.post_address' => 'addAddressInfo',
             'sylius.order.post_payment' => 'addPaymentInfo',
             'sylius.order.post_select_shipping' => 'addShippingInfo',
+            'sylius.order.post_create' => 'purchase',
+            'sylius.order.post_admin_create' => 'purchase',
             'sylius.order.post_complete' => 'purchase',
         ];
     }
 
-    public function beginCheckout(ResourceControllerEvent $resourceControllerEvent): void
+    public function onKernelRequest(ControllerArgumentsEvent $event): void
     {
+        /*
+         * @psalm-suppress MixedArgument
+         */
+        $routeName = $event->getRequest()->attributes->get('_route');
+
+        if (!$event->isMainRequest()
+            || $event->getRequest()->getMethod() != 'GET'
+            || !\is_array($event->getController())
+            || 'sylius_shop_checkout_address' !== $routeName
+        ) {
+            return;
+        }
 
         $this->eventsStorage->setEvent(
             $this->checkoutEventFactory->beginCheckout()
         );
     }
 
-    public function addPaymentInfo(ResourceControllerEvent $resourceControllerEvent): void
+    public function addAddressInfo(GenericEvent $event): void
+    {
+        $this->eventsStorage->setEvent(
+            $this->checkoutEventFactory->addAddressInfo()
+        );
+    }
+
+    public function addPaymentInfo(GenericEvent $event): void
     {
         $this->eventsStorage->setEvent(
             $this->checkoutEventFactory->addPaymentInfo()
         );
     }
 
-    public function addShippingInfo(ResourceControllerEvent $resourceControllerEvent): void
+    public function addShippingInfo(GenericEvent $event): void
     {
         $this->eventsStorage->setEvent(
             $this->checkoutEventFactory->addShippingInfo()
@@ -66,8 +91,11 @@ class CheckoutEventListener implements EventSubscriberInterface
 
     public function purchase(ResourceControllerEvent $resourceControllerEvent): void
     {
+        /** @var Order $order */
+        $order = $resourceControllerEvent->getSubject();
+
         $this->eventsStorage->setEvent(
-            $this->checkoutEventFactory->purchase()
+            $this->checkoutEventFactory->purchase($order)
         );
     }
 }

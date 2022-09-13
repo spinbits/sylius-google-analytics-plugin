@@ -8,7 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto;
+namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
+
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
 
 class Item implements \JsonSerializable, ItemInterface
 {
@@ -18,7 +20,7 @@ class Item implements \JsonSerializable, ItemInterface
     private string $item_name;
     private ?string $affiliation;
     private ?string $coupon;
-    private ?string $currency;
+    private string $currency;
     private ?float $discount;
     private ?int $index;
     private ?string $item_brand;
@@ -32,24 +34,24 @@ class Item implements \JsonSerializable, ItemInterface
     private ?string $item_variant;
     private ?string $location_id;
     private ?float $price;
-    private ?int $quantity;
+    private int $quantity;
 
     public function __construct(
         string $item_id,
         string $item_name,
         float $price,
         string $currency,
+        float $discount = 0,
+        int $quantity = 1,
         ?string $affiliation = null,
         ?string $coupon = null,
-        float $discount = 0,
         ?int $index = null,
         ?string $item_brand = null,
         ?array $item_category = null,
         ?string $item_list_id = null,
         ?string $item_list_name = null,
         ?string $item_variant = null,
-        ?string $location_id = null,
-        int $quantity = 1
+        ?string $location_id = null
     ) {
         $this->item_id = $item_id;
         $this->item_name = $item_name;
@@ -75,153 +77,87 @@ class Item implements \JsonSerializable, ItemInterface
         }
     }
 
-    /**
-     * @return float
-     */
-    public function getDiscount(): float
+    public function getValue(): float
     {
-        return $this->discount;
+        return ((float) $this->price - (float) $this->discount) * $this->quantity;
     }
 
-    /**
-     * @return float
-     */
-    public function getPrice(): float
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    /**
-     * @return int
-     */
     public function getQuantity(): int
     {
         return $this->quantity;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @param string|null $affiliation
-     * @return Item
-     */
-    public function setAffiliation($affiliation)
+    public function setAffiliation(?string $affiliation): Item
     {
         $this->affiliation = $affiliation;
         return $this;
     }
 
-    /**
-     * @param string|null $coupon
-     * @return Item
-     */
-    public function setCoupon($coupon)
+    public function setCoupon(?string $coupon): Item
     {
         $this->coupon = $coupon;
         return $this;
     }
 
-    /**
-     * @param string|null $currency
-     * @return Item
-     */
-    public function setCurrency(?string $currency): self
-    {
-        $this->currency = $currency;
-        return $this;
-    }
-
-    /**
-     * @param float|null $discount
-     * @return Item
-     */
-    public function setDiscount(?float $discount): self
+    public function setDiscount(?float $discount): Item
     {
         $this->discount = $discount;
         return $this;
     }
 
-    /**
-     * @param int|null $index
-     * @return Item
-     */
-    public function setIndex(?int $index): self
+    public function setIndex(?int $index): Item
     {
         $this->index = $index;
         return $this;
     }
 
-    /**
-     * @param string|null $item_brand
-     * @return Item
-     */
-    public function setItemBrand(?string $item_brand): self
+    public function setItemBrand(?string $item_brand): Item
     {
         $this->item_brand = $item_brand;
         return $this;
     }
 
-    /**
-     * @param string|null $item_list_id
-     * @return Item
-     */
-    public function setItemListId($item_list_id)
+    public function setItemListId(?string $item_list_id): Item
     {
         $this->item_list_id = $item_list_id;
         return $this;
     }
 
-    /**
-     * @param string|null $item_list_name
-     * @return Item
-     */
-    public function setItemListName($item_list_name)
+    public function setItemListName(?string $item_list_name): Item
     {
         $this->item_list_name = $item_list_name;
         return $this;
     }
 
-    /**
-     * @param string|null $item_variant
-     * @return Item
-     */
-    public function setItemVariant($item_variant)
+    public function setItemVariant(?string $item_variant): Item
     {
         $this->item_variant = $item_variant;
         return $this;
     }
 
-    /**
-     * @param string|null $location_id
-     * @return Item
-     */
-    public function setLocationId($location_id)
+    public function setLocationId(?string $location_id): Item
     {
         $this->location_id = $location_id;
         return $this;
     }
 
-    /**
-     * @param float|null $price
-     * @return Item
-     */
-    public function setPrice($price)
+    public function setPrice(?float $price): Item
     {
         $this->price = $price;
         return $this;
     }
 
-    /**
-     * @param int|int|null $quantity
-     * @return Item
-     */
-    public function setQuantity($quantity)
+    public function setQuantity(int $quantity): Item
     {
         $this->quantity = $quantity;
         return $this;

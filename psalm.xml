@@ -10,6 +10,8 @@
         <directory name="src" />
         <ignoreFiles>
             <directory name="vendor" />
+            <file name="src/DependencyInjection/Configuration.php"></file>
+            <file name="src/DependencyInjection/SpinbitsSyliusGoogleAnalytics4Extension.php"></file>
         </ignoreFiles>
     </projectFiles>
 </psalm>

@@ -10,12 +10,11 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\EventInterface;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemInterface;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\ItemsContainerEvent;
+
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\Item;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\ItemInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\JsonSerializeTrait;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\PromotionItem;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\PromotionItem;
 
 class SelectPromotion extends ItemsContainerEvent implements EventInterface
 {
