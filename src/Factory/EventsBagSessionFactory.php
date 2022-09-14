@@ -8,21 +8,16 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\SyliusGoogleAnalytics4Plugin\Storage;
+namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
-
+use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
 use Symfony\Component\HttpFoundation\Session\SessionFactoryInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class SessionFactoryWithEventsBag implements SessionFactoryInterface
+class EventsBagSessionFactory implements SessionFactoryInterface
 {
-    private SessionFactoryInterface $delegate;
-    private EventsBag $eventsBag;
-
-    public function __construct(SessionFactoryInterface $delegate, EventsBag $eventsBag)
+    public function __construct(private SessionFactoryInterface $delegate, private EventsBag $eventsBag)
     {
-        $this->delegate = $delegate;
-        $this->eventsBag = $eventsBag;
     }
 
     public function createSession(): SessionInterface

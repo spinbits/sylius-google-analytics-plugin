@@ -18,7 +18,6 @@ use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderItem;
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\ProductVariant;
-use Sylius\Component\Core\Model\Promotion;
 use Sylius\Component\Core\Model\Taxon;
 use Sylius\Component\Order\Model\OrderItemInterface;
 use Sylius\Component\Product\Model\ProductInterface;
@@ -28,25 +27,12 @@ use Sylius\Component\Product\Resolver\ProductVariantResolverInterface;
 
 class ItemFactory
 {
-    private ChannelContextInterface $channelContext;
-    private CurrencyContextInterface $currencyContext;
-    private ProductVariantResolverInterface $productVariantResolver;
-
-    /**
-     * @param ChannelContextInterface $channelContext
-     * @param CurrencyContextInterface $currencyContext
-     * @param ProductVariantResolverInterface $productVariantResolver
-     */
     public function __construct(
-        ChannelContextInterface $channelContext,
-        CurrencyContextInterface $currencyContext,
-        ProductVariantResolverInterface $productVariantResolver
+        private ChannelContextInterface $channelContext,
+        private CurrencyContextInterface $currencyContext,
+        private ProductVariantResolverInterface $productVariantResolver
     ) {
-        $this->channelContext = $channelContext;
-        $this->currencyContext = $currencyContext;
-        $this->productVariantResolver = $productVariantResolver;
     }
-
 
     public function fromProductVariant(ProductVariantInterface $variant): Item
     {
@@ -56,7 +42,7 @@ class ItemFactory
         /** @var ChannelPricingInterface|null $pricing */
         /** @var ProductVariant $variant */
         $pricing = $variant->getChannelPricingForChannel($channel);
-        $price = ($pricing?->getPrice() ?? $pricing?->getOriginalPrice() ?? 0) / 100;
+        $price = $pricing?->getPrice() ?? $pricing?->getOriginalPrice() ?? 0;
         /** @var Product|null $product */
         $product = $variant->getProduct();
         /** @var Taxon|null $mainTaxon */
@@ -65,7 +51,7 @@ class ItemFactory
         return new Item(
             (string) $variant->getId(),
             (string) $variant->getCode(),
-            round($price, 2),
+            round($price/100, 2),
             $this->currencyContext->getCurrencyCode(),
             0,
             1,

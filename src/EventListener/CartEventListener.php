@@ -19,19 +19,10 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 
 class CartEventListener implements EventSubscriberInterface
 {
-    private CartEventFactory $cartEventFactory;
-    private EventsBag $eventsStorage;
-
-    /**
-     * @param CartEventFactory $cartEventFactory
-     * @param EventsBag $eventsStorage
-     */
     public function __construct(
-        CartEventFactory $cartEventFactory,
-        EventsBag $eventsStorage
+        private CartEventFactory $cartEventFactory,
+        private EventsBag $eventsStorage
     ) {
-        $this->cartEventFactory = $cartEventFactory;
-        $this->eventsStorage = $eventsStorage;
     }
 
     public static function getSubscribedEvents()

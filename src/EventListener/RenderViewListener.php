@@ -15,14 +15,8 @@ use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class RenderViewListener
 {
-    private RenderHeadTwigFactory $renderTwig;
-
-    /**
-     * @param RenderHeadTwigFactory $renderTwig
-     */
-    public function __construct(RenderHeadTwigFactory $renderTwig)
+    public function __construct(private RenderHeadTwigFactory $renderTwig)
     {
-        $this->renderTwig = $renderTwig;
     }
 
     public function onKernelResponse(ResponseEvent $event): void

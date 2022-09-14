@@ -20,24 +20,15 @@ use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Purchase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
 use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderInterface;
-use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
-use Sylius\Component\Order\Model\OrderItemInterface;
 
 class CheckoutEventFactory
 {
-    private CartContextInterface $cartContext;
-    private ItemFactory $itemFactory;
-
-    /**
-     * @param CartContextInterface $cartContext
-     * @param ItemFactory $itemFactory
-     */
-    public function __construct(CartContextInterface $cartContext, ItemFactory $itemFactory)
-    {
-        $this->cartContext = $cartContext;
-        $this->itemFactory = $itemFactory;
+    public function __construct(
+        private CartContextInterface $cartContext,
+        private ItemFactory $itemFactory
+    ) {
     }
 
     public function beginCheckout(): BeginCheckout

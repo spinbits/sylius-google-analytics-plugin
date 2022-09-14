@@ -10,7 +10,6 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
-
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\AddToCart;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\RemoveFromCart;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewCart;
@@ -19,17 +18,10 @@ use Sylius\Component\Order\Context\CartContextInterface;
 
 class CartEventFactory
 {
-    private ItemFactory $itemFactory;
-    private CartContextInterface $cartContext;
-
-    /**
-     * @param ItemFactory $itemFactory
-     * @param CartContextInterface $cartContext
-     */
-    public function __construct(ItemFactory $itemFactory, CartContextInterface $cartContext)
-    {
-        $this->itemFactory = $itemFactory;
-        $this->cartContext = $cartContext;
+    public function __construct(
+        private ItemFactory $itemFactory,
+        private CartContextInterface $cartContext
+    ) {
     }
 
     public function addToCart(OrderItemInterface $orderItem): AddToCart

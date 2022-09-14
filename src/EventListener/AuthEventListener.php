@@ -18,19 +18,10 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class AuthEventListener implements EventSubscriberInterface
 {
-    private AuthEventFactory $authEventFactory;
-    private EventsBag $eventsStorage;
-
-    /**
-     * @param AuthEventFactory $authEventFactory
-     * @param EventsBag $eventsStorage
-     */
     public function __construct(
-        AuthEventFactory $authEventFactory,
-        EventsBag $eventsStorage
+        private AuthEventFactory $authEventFactory,
+        private EventsBag $eventsStorage
     ) {
-        $this->authEventFactory = $authEventFactory;
-        $this->eventsStorage = $eventsStorage;
     }
 
     public static function getSubscribedEvents()

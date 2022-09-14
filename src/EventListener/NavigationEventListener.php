@@ -21,20 +21,12 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 
 class NavigationEventListener implements EventSubscriberInterface
 {
-    private NavigationEventFactory $navEventFactory;
-    private EventsBag $eventsStorage;
-
-    /**
-     * @param NavigationEventFactory $navEventFactory
-     * @param EventsBag $eventsStorage
-     */
     public function __construct(
-        NavigationEventFactory $navEventFactory,
-        EventsBag $eventsStorage
+        private NavigationEventFactory $navEventFactory,
+        private EventsBag $eventsStorage
     ) {
-        $this->navEventFactory = $navEventFactory;
-        $this->eventsStorage = $eventsStorage;
     }
+
 
     public static function getSubscribedEvents()
     {

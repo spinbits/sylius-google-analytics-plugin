@@ -14,31 +14,14 @@ use Twig\Environment;
 
 class RenderHeadTwigFactory
 {
-    private Environment $twig;
-    private string $id;
-    private string $additionalParams;
-    private string $templateName;
-    private bool $enabled;
-
-    /**
-     * @param Environment $twig
-     * @param string $id
-     * @param string $additionalParams
-     * @param string $templateName
-     * @param bool $enabled
-     */
     public function __construct(
-        Environment $twig,
-        string $id,
-        string $additionalParams,
-        string $templateName,
-        bool $enabled
+        private Environment $twig,
+        private string $id,
+        private string $additionalParams,
+        private string $templateName,
+        private bool $enabled
     ) {
-        $this->twig = $twig;
-        $this->id = $id;
         $this->additionalParams = $additionalParams ? '&'.trim($additionalParams,'&') : '';
-        $this->enabled = $enabled;
-        $this->templateName = $templateName;
     }
 
     public function render(): string

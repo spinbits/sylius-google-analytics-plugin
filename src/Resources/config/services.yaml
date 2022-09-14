@@ -26,6 +26,6 @@ services:
         arguments:
             $productVariantResolver: '@sylius.product_variant_resolver.default'
             
-    Spinbits\SyliusGoogleAnalytics4Plugin\Storage\SessionFactoryWithEventsBag:
+    Spinbits\SyliusGoogleAnalytics4Plugin\Factory\EventsBagSessionFactory:
         decorates: session.factory
         arguments: ['@.inner']

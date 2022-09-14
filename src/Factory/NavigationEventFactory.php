@@ -15,20 +15,12 @@ use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItem;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItemList;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Product\Model\ProductInterface as ProdProductInterface;
 
 class NavigationEventFactory
 {
-    private ItemFactory $itemFactory;
-
-    /**
-     * @param ItemFactory $itemFactory
-     */
-    public function __construct(ItemFactory $itemFactory)
+    public function __construct(private ItemFactory $itemFactory)
     {
-        $this->itemFactory = $itemFactory;
     }
-
 
     public function search(string $searchTerm): Search
     {

@@ -20,19 +20,10 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 
 class CheckoutEventListener implements EventSubscriberInterface
 {
-    private CheckoutEventFactory $checkoutEventFactory;
-    private EventsBag $eventsStorage;
-
-    /**
-     * @param CheckoutEventFactory $checkoutEventFactory
-     * @param EventsBag $eventsStorage
-     */
     public function __construct(
-        CheckoutEventFactory $checkoutEventFactory,
-        EventsBag $eventsStorage
+        private CheckoutEventFactory $checkoutEventFactory,
+        private EventsBag $eventsStorage
     ) {
-        $this->checkoutEventFactory = $checkoutEventFactory;
-        $this->eventsStorage = $eventsStorage;
     }
 
     public static function getSubscribedEvents()
