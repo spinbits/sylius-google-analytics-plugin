@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 
+use Pagerfanta\Pagerfanta;
 use Sonata\BlockBundle\Event\BlockEvent;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\NavigationEventFactory;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
@@ -81,8 +82,17 @@ class NavigationEventListener implements EventSubscriberInterface
 
     public function viewItemList(BlockEvent $event): void
     {
+        /** @var array<'products', mixed> $settings */
+        $settings = $event->getSettings();
+
+        $products = [];
+        if (isset($settings['products']) && $settings['products'] instanceof Pagerfanta) {
+            /** @var array<ProductInterface> $products */
+            $products = (array) $settings['products']->getCurrentPageResults();
+        }
+
         $this->eventsStorage->setEvent(
-            $this->navEventFactory->viewItemList()
+            $this->navEventFactory->viewItemList($products)
         );
     }
 
