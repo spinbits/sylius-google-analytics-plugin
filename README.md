@@ -35,24 +35,17 @@ It is designed based on backend Sylius events for high compatibility no matter w
 
 ## Quickstart Installation
 
-1. Install plugin:
-
-    ```bash
-    composer require spinbits/google-analytics-4-plugin
-    ```
-
-2. Add to bundles.php
-
-    ```php
-        Spinbits\SyliusGoogleAnalytics4Plugin\SpinbitsSyliusGoogleAnalytics4Plugin::class => ['all' => true],
-    ```
-
-3. Add configuration to `config/services.yaml`
+1. Add configuration to `config/services.yaml` with your Google Tag identificator
 
     ```yaml
     spinbits_sylius_google_analytics4:
-        enabled: true
-        id: "G-WX1RJ8SP3R"
+        id: "G-XXXXXXXXXX"
+    ```
+
+2. Install plugin:
+
+    ```bash
+    composer require spinbits/google-analytics-4-plugin
     ```
 
 
