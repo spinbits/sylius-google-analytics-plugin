@@ -15,6 +15,7 @@ use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItem;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItemList;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Product\Model\ProductInterface as ProdProductInterface;
 
 class NavigationEventFactory
 {
