@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\AddToCart;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\RemoveFromCart;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewCart;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\AddToCart;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\RemoveFromCart;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\ViewCart;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Order\Context\CartContextInterface;

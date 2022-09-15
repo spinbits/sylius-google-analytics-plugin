@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Login;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Signup;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\Login;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\Signup;
 
 class AuthEventFactory
 {

@@ -3,10 +3,15 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <defaults public="true" />
+        <defaults autowire="true" />
+        <defaults autoconfigure="true" />
         <service id="spinbits_sylius_google_analytics4_plugin.context.ui.shop.gtm" class="Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Behat\Context\Ui\Shop\GTMContext">
             <argument type="service" id="spinbits_sylius_google_analytics4.page.shop.homepage" />
         </service>
-
+        <service id="spinbits_sylius_google_analytics4_plugin.context.ui.shop.gtm_product" class="Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Behat\Context\Ui\Shop\GTMProductContext">
+            <argument type="service" id="spinbits_sylius_google_analytics4.page.shop.homepage" />
+        </service>
         <service id="spinbits_sylius_google_analytics4.page.shop.homepage" class="Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Behat\Page\Shop\Homepage" parent="sylius.behat.symfony_page" public="false" />
+        <service id="spinbits_sylius_google_analytics4.page.shop.product" class="Sylius\Behat\Page\Shop\Product\ShowPage" parent="sylius.behat.symfony_page" public="false" />
     </services>
 </container>

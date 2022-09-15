@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto;
+namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Dto\Item;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\Item;
+use Spinbits\GoogleAnalytics4EventsDtoS\Item\Item;
 use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase

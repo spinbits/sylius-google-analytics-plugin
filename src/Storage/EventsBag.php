@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Storage;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\EventInterface;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\EventInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class EventsBag extends FlashBag

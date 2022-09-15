@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Item\Item;
+use Spinbits\GoogleAnalytics4EventsDtoS\Item\Item;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\Channel;
 use Sylius\Component\Core\Model\ChannelPricingInterface;

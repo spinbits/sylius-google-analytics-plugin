@@ -11,20 +11,15 @@ declare(strict_types=1);
 namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
+use Sylius\Behat\Page\Shop\Product\ShowPageInterface;
 use Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Behat\Page\Shop\Homepage;
 use Webmozart\Assert\Assert;
 
 class GTMContext implements Context
 {
-    /** @var Homepage */
-    private $homepage;
-
-    /**
-     * @param Homepage $homepage
-     */
-    public function __construct(Homepage $homepage)
-    {
-        $this->homepage = $homepage;
+    public function __construct(
+        private Homepage $homepage
+    ) {
     }
 
     /**
@@ -44,9 +39,9 @@ class GTMContext implements Context
     }
 
     /**
-     * @Then they should have existing gtm id :gtm_id
+     * @Then I should have existing gtm id :gtm_id
      */
-    public function theyShouldHaveExistingGTMId(string $gtm_id): void
+    public function iShouldHaveExistingString(string $gtm_id): void
     {
         Assert::true($this->homepage->contains($gtm_id));
     }

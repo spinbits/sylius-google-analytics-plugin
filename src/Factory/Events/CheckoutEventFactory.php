@@ -12,12 +12,12 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events;
 
 
 use Doctrine\Common\Collections\Collection;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\AddAddressInfo;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\AddPaymentInfo;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\AddShippingInfo;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\BeginCheckout;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Purchase;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\AddAddressInfo;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\AddPaymentInfo;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\AddShippingInfo;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\BeginCheckout;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\Purchase;
+use Spinbits\GoogleAnalytics4EventsDtoS\Events\ItemsContainerInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
 use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderInterface;

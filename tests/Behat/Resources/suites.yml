@@ -4,6 +4,9 @@ default:
     suites:
         gtm:
             contexts:
+                - sylius.behat.context.ui.shop.product
+                - sylius.behat.context.setup.product
+                
                 - spinbits_sylius_google_analytics4_plugin.context.ui.shop.gtm
 
             filters:
