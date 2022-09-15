@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\CheckoutEventFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\CheckoutEventFactory;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Model\Order;

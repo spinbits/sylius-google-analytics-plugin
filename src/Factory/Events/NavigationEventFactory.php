@@ -8,12 +8,13 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
+namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events;
 
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Search;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItem;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ViewItemList;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Product\Model\ProductInterface as ProdProductInterface;
 

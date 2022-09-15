@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
+namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events;
 
 
 use Doctrine\Common\Collections\Collection;
@@ -18,6 +18,7 @@ use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\AddShippingInfo;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\BeginCheckout;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\Purchase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Dto\Events\ItemsContainerInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
 use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;

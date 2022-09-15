@@ -12,7 +12,7 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 
 use Pagerfanta\Pagerfanta;
 use Sonata\BlockBundle\Event\BlockEvent;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\NavigationEventFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\NavigationEventFactory;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Model\ProductInterface;

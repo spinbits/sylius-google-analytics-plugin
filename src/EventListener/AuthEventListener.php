@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\AuthEventFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\AuthEventFactory;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
