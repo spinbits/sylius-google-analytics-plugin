@@ -73,7 +73,7 @@ class CheckoutEventFactoryTest extends TestCase
         $result = $this->sut->beginCheckout();
 
         $this->assertSame('begin_checkout', $result->getName());
-        $this->assertSame(["coupon"=>"Promo 1","currency"=>"","value"=>0.0,"items"=>[$item]], $result->jsonSerialize());
+        $this->assertEqualsCanonicalizing(["coupon"=>"Promo 1","currency"=>"","value"=>0.0,"items"=>[$item]], $result->jsonSerialize());
     }
 
     public function testAddAddressInfo()
