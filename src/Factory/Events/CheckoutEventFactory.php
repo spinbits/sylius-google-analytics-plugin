@@ -22,7 +22,7 @@ use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
 use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
-use Sylius\Component\Order\Model\OrderItemInterface;
+use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
 
 class CheckoutEventFactory
@@ -41,7 +41,7 @@ class CheckoutEventFactory
         $beginCheckout = new BeginCheckout();
         $beginCheckout->setCoupon(implode(', ', $this->getCoupons($order)));
 
-        $this->addItems($beginCheckout, $this->cartContext->getCart()->getItems());
+        $this->addItems($beginCheckout, $order->getItems());
         return $beginCheckout;
     }
 
@@ -53,7 +53,7 @@ class CheckoutEventFactory
         $addAddress = new AddAddressInfo();
         $addAddress->setCoupon(implode(', ', $this->getCoupons($order)));
 
-        $this->addItems($addAddress, $this->cartContext->getCart()->getItems());
+        $this->addItems($addAddress, $order->getItems());
         return $addAddress;
     }
 
@@ -67,7 +67,7 @@ class CheckoutEventFactory
         $addPayment->setCoupon(implode(', ', $this->getCoupons($order)));
         $addPayment->setPaymentType($lastPayment?->getMethod()?->getName());
 
-        $this->addItems($addPayment, $this->cartContext->getCart()->getItems());
+        $this->addItems($addPayment, $order->getItems());
         return $addPayment;
     }
 
@@ -82,7 +82,7 @@ class CheckoutEventFactory
         $addShippingInfo->setCoupon(implode(', ', $this->getCoupons($order)));
         $addShippingInfo->setShippingTier($shipment?->getMethod()?->getName());
 
-        $this->addItems($addShippingInfo, $this->cartContext->getCart()->getItems());
+        $this->addItems($addShippingInfo, $order->getItems());
         return $addShippingInfo;
     }
 
@@ -94,7 +94,9 @@ class CheckoutEventFactory
         $purchase->setShipping($order->getShippingTotal()/100);
         $purchase->setTax($order->getTaxTotal()/100);
 
-        $this->addItems($purchase, $order->getItems());
+        /** @var Collection<array-key, OrderItemInterface> $items */
+        $items = $order->getItems();
+        $this->addItems($purchase, $items);
         return $purchase;
     }
 
