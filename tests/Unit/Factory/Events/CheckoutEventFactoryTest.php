@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Factory\Events;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Spinbits\GoogleAnalytics4EventsDtoS\Item\Item;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\CheckoutEventFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -63,14 +64,16 @@ class CheckoutEventFactoryTest extends TestCase
 
         $this->cartContext->method('getCart')->willReturn($order);
 
+        $item = $this->createMock(Item::class);
         $this->itemFactory
             ->expects($this->once())
-            ->method('fromOrderItem');
+            ->method('fromOrderItem')
+            ->willReturn($item);
 
         $result = $this->sut->beginCheckout();
 
         $this->assertSame('begin_checkout', $result->getName());
-        $this->assertSame('{"coupon":"Promo 1","currency":"","value":0,"items":[[]]}', (string) $result);
+        $this->assertSame(["coupon"=>"Promo 1","currency"=>"","value"=>0.0,"items"=>[$item]], $result->jsonSerialize());
     }
 
     public function testAddAddressInfo()
@@ -86,15 +89,17 @@ class CheckoutEventFactoryTest extends TestCase
 
         $this->cartContext->method('getCart')->willReturn($order);
 
+        $item = $this->createMock(Item::class);
         $this->itemFactory
             ->expects($this->once())
             ->method('fromOrderItem')
-            ->with(...[$orderItem]);
+            ->with(...[$orderItem])
+            ->willReturn($item);
 
         $result = $this->sut->addAddressInfo();
 
         $this->assertSame('add_address_info', $result->getName());
-        $this->assertSame('{"coupon":"Promo 1","currency":"","value":0,"items":[[]]}', (string) $result);
+        $this->assertEqualsCanonicalizing(["coupon"=>"Promo 1","currency"=>"","value"=>0,"items"=>[$item]], (array) $result);
     }
 
     public function testAddPaymentInfo()
@@ -123,16 +128,18 @@ class CheckoutEventFactoryTest extends TestCase
 
         $this->cartContext->method('getCart')->willReturn($order);
 
+        $item = $this->createMock(Item::class);
         $this->itemFactory
             ->expects($this->once())
             ->method('fromOrderItem')
-            ->with(...[$orderItem]);
+            ->with(...[$orderItem])
+            ->willReturn($item);
 
         $result = $this->sut->addPaymentInfo();
 
-        $expected = '{"coupon":"Promo 1","payment_type":"Paypal","currency":"","value":0,"items":[[]]}';
+        $expected = ["coupon"=>"Promo 1","payment_type"=>"Paypal","currency"=>"","value"=>0,"items"=>[$item]];
         $this->assertSame('add_payment_info', $result->getName());
-        $this->assertSame($expected, (string) $result);
+        $this->assertEqualsCanonicalizing($expected, (array) $result);
     }
 
     public function testAddShippingInfo()
@@ -161,16 +168,18 @@ class CheckoutEventFactoryTest extends TestCase
 
         $this->cartContext->method('getCart')->willReturn($order);
 
+        $item = $this->createMock(Item::class);
         $this->itemFactory
             ->expects($this->once())
             ->method('fromOrderItem')
-            ->with(...[$orderItem]);
+            ->with(...[$orderItem])
+            ->willReturn($item);
 
         $result = $this->sut->addShippingInfo();
 
-        $expected = '{"coupon":"Promo 1","shipping_tier":"UPS","currency":"","value":0,"items":[[]]}';
+        $expected = ["coupon"=>"Promo 1","shipping_tier"=>"UPS","currency"=>"","value"=>0,"items"=>[$item]];
         $this->assertSame('add_shipping_info', $result->getName());
-        $this->assertSame($expected, (string) $result);
+        $this->assertEqualsCanonicalizing($expected, (array) $result);
     }
 
     public function testPurchase()
@@ -187,15 +196,17 @@ class CheckoutEventFactoryTest extends TestCase
         $order->method('getTaxTotal')->willReturn(323);
         $order->method('getShippingTotal')->willReturn(350);
 
+        $item = $this->createMock(Item::class);
         $this->itemFactory
             ->expects($this->once())
             ->method('fromOrderItem')
-            ->with(...[$orderItem]);
+            ->with(...[$orderItem])
+            ->willReturn($item);
 
         $result = $this->sut->purchase($order);
 
-        $expected = '{"transaction_id":"000023","coupon":"Promo 1","shipping":3.5,"tax":3.23,"currency":"","value":6.73,"items":[[]]}';
+        $expected = ["transaction_id"=>"000023","coupon"=>"Promo 1","shipping"=>3.5,"tax"=>3.23,"currency"=>"","value"=>6.73,"items"=>[$item]];
         $this->assertSame('purchase', $result->getName());
-        $this->assertSame($expected, (string) $result);
+        $this->assertEqualsCanonicalizing($expected, $result->jsonSerialize());
     }
 }

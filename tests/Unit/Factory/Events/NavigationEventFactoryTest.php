@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Factory\Events;
 
+use Spinbits\GoogleAnalytics4EventsDtoS\Item\Item;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\NavigationEventFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -44,16 +45,17 @@ class NavigationEventFactoryTest extends TestCase
     {
         $product = $this->createMock(Product::class);
 
+        $item = $this->createMock(Item::class);
         $this->itemFactory
             ->expects($this->once())
             ->method('fromProduct')
-            ->with(...[$product]);
+            ->with(...[$product])
+            ->willReturn($item);
 
         $result = $this->sut->viewItemList([$product], 'some id', 'some name');
-
-        $expected = '{"item_list_id":"some id","item_list_name":"some name","items":[[]]}';
+        $expected = ['item_list_id'=>'some id','item_list_name'=>'some name','items'=>[$item]];
         $this->assertSame('view_item_list', $result->getName());
-        $this->assertSame($expected, (string) $result);
+        $this->assertEqualsCanonicalizing($expected, $result->jsonSerialize());
     }
 
     public function testViewItem()
