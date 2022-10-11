@@ -20,9 +20,9 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 class CartEventListener implements EventSubscriberInterface
 {
     public function __construct(
-        private string $viewCartRouteName = 'sylius_shop_cart_summary',
         private CartEventFactory $cartEventFactory,
-        private EventsBag $eventsStorage
+        private EventsBag $eventsStorage,
+        private string $viewCartRouteName = 'sylius_shop_cart_summary',
     ) {
     }
 

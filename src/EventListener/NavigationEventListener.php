@@ -23,9 +23,9 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 class NavigationEventListener implements EventSubscriberInterface
 {
     public function __construct(
-        private $searchRouteName = 'sylius_shop_product_index',
         private NavigationEventFactory $navEventFactory,
-        private EventsBag $eventsStorage
+        private EventsBag $eventsStorage,
+        private string $searchRouteName = 'sylius_shop_product_index',
     ) {
     }
 

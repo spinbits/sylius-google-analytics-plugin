@@ -21,9 +21,9 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 class CheckoutEventListener implements EventSubscriberInterface
 {
     public function __construct(
-        private string $beginCheckoutRouteName = 'sylius_shop_checkout_address',
         private CheckoutEventFactory $checkoutEventFactory,
         private EventsBag $eventsStorage,
+        private string $beginCheckoutRouteName = 'sylius_shop_checkout_address',
     ) {
     }
 
