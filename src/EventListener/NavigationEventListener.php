@@ -23,6 +23,7 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 class NavigationEventListener implements EventSubscriberInterface
 {
     public function __construct(
+        private $searchRouteName = 'sylius_shop_product_index',
         private NavigationEventFactory $navEventFactory,
         private EventsBag $eventsStorage
     ) {
@@ -47,7 +48,7 @@ class NavigationEventListener implements EventSubscriberInterface
 
         if (!$event->isMainRequest()
             || !\is_array($event->getController())
-            || 'sylius_shop_product_index' !== $routeName
+            || $this->searchRouteName !== $routeName
         ) {
             return;
         }

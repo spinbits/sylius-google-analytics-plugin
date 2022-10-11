@@ -20,6 +20,7 @@ use Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
 class CartEventListener implements EventSubscriberInterface
 {
     public function __construct(
+        private string $viewCartRouteName = 'sylius_shop_cart_summary',
         private CartEventFactory $cartEventFactory,
         private EventsBag $eventsStorage
     ) {
@@ -56,7 +57,7 @@ class CartEventListener implements EventSubscriberInterface
 
         if (!$event->isMainRequest()
             || !\is_array($event->getController())
-            || 'sylius_shop_cart_summary' != $routeName
+            || $this->viewCartRouteName != $routeName
         ) {
             return;
         }

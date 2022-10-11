@@ -48,9 +48,49 @@ It is designed based on backend Sylius events for high compatibility no matter w
     composer require spinbits/google-analytics-4-plugin
     ```
 
-
 ### Develop
 
 1. Execute `make start`
 
 2. See your browser `open localhost`
+
+You can find more examples in tests directory and in this repo: [Google Analytics 4 Enhanced ecommerce Plugin](https://github.com/spinbits/sylius-google-analytics-plugin)
+
+## Testing
+
+``` bash
+$ composer test
+```
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Security
+
+If you discover any security related issues, please email office@spinbits.io instead of using the issue tracker.
+
+## Credits
+
+- [Spinbits][link-author]
+- [Jakub Lech](https://github.com/jakublech)
+- [All Contributors][link-contributors]
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[ico-version]: https://img.shields.io/packagist/v/spinbits/google-analytics-4-events-dto-s.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/spinbits/google-analytics-4-events-dto-s/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/spinbits/google-analytics-4-events-dto-s.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/spinbits/google-analytics-4-events-dto-s.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/spinbits/google-analytics-4-events-dto-s.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/spinbits/google-analytics-4-events-dto-s
+[link-travis]: https://travis-ci.org/spinbits/google-analytics-4-events-dto-s
+[link-scrutinizer]: https://scrutinizer-ci.com/g/spinbits/google-analytics-4-events-dto-s/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/spinbits/google-analytics-4-events-dto-s
+[link-downloads]: https://packagist.org/packages/spinbits/google-analytics-4-events-dto-s
+[link-author]: https://github.com/spinbits
+[link-contributors]: ../../contributors
