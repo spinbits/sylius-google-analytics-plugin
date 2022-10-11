@@ -43,6 +43,7 @@ class NavigationEventListener implements EventSubscriberInterface
     {
         /**
          * @psalm-suppress MixedArgument
+         * @psalm-suppress MixedAssignment
          */
         $routeName = $event->getRequest()->attributes->get('_route');
 

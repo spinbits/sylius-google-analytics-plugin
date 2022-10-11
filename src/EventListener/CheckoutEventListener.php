@@ -42,8 +42,9 @@ class CheckoutEventListener implements EventSubscriberInterface
 
     public function onKernelRequest(ControllerArgumentsEvent $event): void
     {
-        /*
+        /**
          * @psalm-suppress MixedArgument
+         * @psalm-suppress MixedAssignment
          */
         $routeName = $event->getRequest()->attributes->get('_route');
 

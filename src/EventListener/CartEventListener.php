@@ -52,6 +52,7 @@ class CartEventListener implements EventSubscriberInterface
     {
         /**
          * @psalm-suppress MixedArgument
+         * @psalm-suppress MixedAssignment
          */
         $routeName = strval($event->getRequest()->attributes->get('_route'));
 
