@@ -1,6 +1,9 @@
 [![image](./docs/img/spinbits.jpg)](https://spinbits.io)
 # Google Analytics 4 Enhanced ecommerce Plugin
 
+## Need help ?
+Drop us a message hello@spinbits.io
+
 ## Overview
 
 This plugin is used to connect Sylius with [Google Analytics 4](https://developers.google.com/analytics/devguides/collection/ga4) using Google Tag Manager ([gtag.js](https://developers.google.com/tag-platform/gtagjs/reference)). 
@@ -69,12 +72,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Security
 
 If you discover any security related issues, please email office@spinbits.io instead of using the issue tracker.
-
-## Credits
-
-- [Spinbits][link-author]
-- [Jakub Lech](https://github.com/jakublech)
-- [All Contributors][link-contributors]
 
 ## License
 
