@@ -1,0 +1,2 @@
+sylius_ui:
+   use_webpack: false
