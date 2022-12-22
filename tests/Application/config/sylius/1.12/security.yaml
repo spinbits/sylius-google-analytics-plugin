@@ -57,16 +57,14 @@ security:
             pattern: "%sylius.security.new_api_shop_regex%/.*"
             provider: sylius_api_shop_user_provider
             stateless: true
-            anonymous: true
+            entry_point: jwt
             json_login:
                 check_path: "%sylius.security.new_api_shop_route%/authentication-token"
                 username_path: email
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+            jwt: true
 
         shop:
             switch_user: { role: ROLE_ALLOWED_TO_SWITCH }
@@ -83,7 +81,7 @@ security:
                 default_target_path: sylius_shop_homepage
                 use_forward: false
                 use_referer: true
-                csrf_token_generator: security.csrf.token_manager
+                enable_csrf: true
                 csrf_parameter: _csrf_shop_security_token
                 csrf_token_id: shop_authenticate
             remember_me:
