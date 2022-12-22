@@ -1,9 +1,6 @@
-##framework:
-#    cache:
-#        pools:
-#            test.mailer_pool:
-#                adapter: cache.adapter.filesystem
-#
-#services:
-#    test.mailer_pool:
-#        alias: cache.adapter.filesystem
+framework:
+    cache:
+        pools:
+            test.mailer_pool:
+                adapter: cache.adapter.filesystem
+
