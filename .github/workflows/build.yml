@@ -141,7 +141,7 @@ jobs:
                 name: Prepare test application assets
                 run: |
                     (cd tests/Application && bin/console assets:install public -vvv)
-                    (cd tests/Application && yarn prod)
+                    (cd tests/Application && yarn install)
 
             -
                 name: Prepare test application cache
