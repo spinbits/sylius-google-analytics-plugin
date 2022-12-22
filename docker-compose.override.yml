@@ -7,6 +7,7 @@ services:
       - "5432"
 ###< doctrine/doctrine-bundle ###
 
+
 ###> symfony/mailer ###
   mailer:
     image: schickling/mailcatcher
