@@ -12,6 +12,7 @@ security:
 
     encoders:
         Sylius\Component\User\Model\UserInterface: argon2i
+        sha512: sha512
     firewalls:
         admin:
             switch_user: true
