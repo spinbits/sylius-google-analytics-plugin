@@ -5,7 +5,7 @@
     "keywords": ["sylius", "sylius-plugin", "google", "analytics", "spinbits"],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": "^8.0 || ^8.1",
         "ext-json": "*",
         "spinbits/google-analytics-4-events-dto-s": "^0.9.0",
         "sylius/sylius": "~1.12.0 || ~1.11.0"
