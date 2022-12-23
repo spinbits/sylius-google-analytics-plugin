@@ -5,10 +5,10 @@
     "keywords": ["sylius", "sylius-plugin", "google", "analytics", "spinbits"],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": "^8.0 || ^8.1",
         "ext-json": "*",
         "spinbits/google-analytics-4-events-dto-s": "^0.9.0",
-        "sylius/sylius": "^1.11.6"
+        "sylius/sylius": "~1.12.0 || ~1.11.0"
     },
     "require-dev": {
         "behat/behat": "^3.6.1",
@@ -33,6 +33,7 @@
         "phpunit/phpunit": "^9.5",
         "polishsymfonycommunity/symfony-mocker-container": "^1.0",
         "sylius-labs/coding-standard": "^4.2",
+        "sylius-labs/sylius-1-11-shim-bundle": "^1.0",
         "symfony/browser-kit": "^5.4",
         "symfony/debug-bundle": "^5.4",
         "symfony/dotenv": "^5.4",
