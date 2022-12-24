@@ -13,19 +13,19 @@ services:
 
     Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory:
         arguments:
-            $id: '%spinbits_sylius_google_analytics4.id%'
+            $channelContext: '@sylius.context.channel'
             $enabled: '%spinbits_sylius_google_analytics4.enabled%'
             $additionalParams: '%spinbits_sylius_google_analytics4.additionalParameters%'
             $templateName: '%spinbits_sylius_google_analytics4.templateName%'
-            
+    
     Spinbits\SyliusGoogleAnalytics4Plugin\EventListener\RenderViewListener:
         tags:
             - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
-            
+    
     Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory:
         arguments:
             $productVariantResolver: '@sylius.product_variant_resolver.default'
-            
+    
     Spinbits\SyliusGoogleAnalytics4Plugin\Factory\EventsBagSessionFactory:
         decorates: session.factory
         arguments: ['@.inner']
