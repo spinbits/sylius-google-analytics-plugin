@@ -11,16 +11,22 @@ declare(strict_types=1);
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
 use Twig\Environment;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
 
 class RenderHeadTwigFactory
 {
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
+
     public function __construct(
+        ChannelContextInterface $channelContext,
         private Environment $twig,
-        private string $id,
         private string $additionalParams,
         private string $templateName,
         private bool $enabled
     ) {
+        $this->channelContext = $channelContext;
         $this->additionalParams = $additionalParams ? '&'.trim($additionalParams,'&') : '';
     }
 
@@ -28,7 +34,7 @@ class RenderHeadTwigFactory
     {
         return !$this->enabled ? '' : $this->twig->render(
             $this->templateName, [
-                'id' => $this->id,
+                'id' => $this->channelContext->getChannel()->getGoogle(),
                 'url_suffix' => $this->additionalParams
             ]
         );
