@@ -22,7 +22,8 @@ class RenderHeadTwigFactory
         private string $additionalParams,
         private string $templateName,
         private bool $enabled,
-        private ?array $channelsIds = []
+        /** @var array<string, string>|string[]|null */
+        private ?array $channelsIds = null
     ) {
         $this->additionalParams = $additionalParams ? '&'.trim($additionalParams,'&') : '';
     }
@@ -37,12 +38,17 @@ class RenderHeadTwigFactory
         );
     }
 
+    /**
+     * @param string $defaultId
+     * @param array<string, string>|string[]|null $channelsIds
+     * @return string
+     */
     private function resolveGtagId(string $defaultId, ?array $channelsIds): string
     {
         if (is_array($channelsIds)) {
             foreach ($channelsIds as $channelCode => $id) {
                 if ($this->channelContext->getChannel()->getCode() === $channelCode) {
-                    return (string) $id;
+                    return $id;
                 }
             }
         }
