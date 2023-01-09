@@ -6,3 +6,7 @@ parameters:
 spinbits_sylius_google_analytics4:
     enabled: true
     id: "G-WX1RJ8SP3R"
+    channels_ids:
+        FASHION_WEB: "G-DF1P3RRJ8S"
+        OTHER_CHANNEL: "G-WX1RJ8SP3R"
+        

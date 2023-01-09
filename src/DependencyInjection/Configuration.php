@@ -23,6 +23,7 @@ final class Configuration implements ConfigurationInterface
             ->booleanNode('enabled')->defaultTrue()->end()
             ->scalarNode('additionalParameters')->defaultValue('')->end()
             ->scalarNode('templateName')->defaultValue('@SpinbitsSyliusGoogleAnalytics4Plugin/tagmanager_head.html.twig')->end()
+            ->arrayNode('channels_ids')->canBeUnset()->useAttributeAsKey('code')->prototype('scalar')->end()
             ->end();
 
         return $treeBuilder;
