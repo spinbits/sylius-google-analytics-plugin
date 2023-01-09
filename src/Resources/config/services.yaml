@@ -17,7 +17,7 @@ services:
             $enabled: '%spinbits_sylius_google_analytics4.enabled%'
             $additionalParams: '%spinbits_sylius_google_analytics4.additionalParameters%'
             $templateName: '%spinbits_sylius_google_analytics4.templateName%'
-            $channelsIds: '%spinbits_sylius_google_analytics4.channelsIds%'
+            $channelsIds: '%spinbits_sylius_google_analytics4.channels_ids%'
             
     Spinbits\SyliusGoogleAnalytics4Plugin\EventListener\RenderViewListener:
         tags:

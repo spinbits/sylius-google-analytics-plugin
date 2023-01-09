@@ -38,11 +38,19 @@ It is designed based on backend Sylius events for high compatibility no matter w
 
 ## Quickstart Installation
 
-1. Add configuration to `config/services.yaml` with your Google Tag identificator
-
+1. Add configuration to `config/services.yaml` with your Google Tag identificator default for all channels:
     ```yaml
     spinbits_sylius_google_analytics4:
         id: "G-XXXXXXXXXX"
+    ```
+    
+    For dedicated GTag Id per channel you can pass `channels_ids`. It contains key-value array where key is channel `code` and value is assigned Google Tag identificator. 
+    ```yaml
+    spinbits_sylius_google_analytics4:
+        id: "G-XXXXXXXXXX"
+        channels_ids:
+            FASHION_WEB: "G-DF1P3RRJ8S"
+            OTHER_CHANNEL: "G-WX1RJ8SP3R"
     ```
 
 2. Install plugin:
