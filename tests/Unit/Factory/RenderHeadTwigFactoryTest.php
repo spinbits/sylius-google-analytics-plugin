@@ -109,7 +109,8 @@ class RenderHeadTwigFactoryTest extends TestCase
             ->with(...['template', [
                 'id' => 'G-123123123',
                 'url_suffix' => '&param'
-            ]]);
+            ]])
+        ->willReturn('example content');
 
         $this->sut->render();
     }
