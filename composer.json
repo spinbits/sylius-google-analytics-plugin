@@ -4,6 +4,11 @@
     "description": "Spinbits Google Analytics 4 plugin for Sylius.",
     "keywords": ["sylius", "sylius-plugin", "google", "analytics", "spinbits"],
     "license": "MIT",
+    "authors": [  {
+            "name": "Spinbits",
+            "homepage": "https://spinbits.io"
+        }
+    ],
     "require": {
         "php": "^8.0 || ^8.1",
         "ext-json": "*",
