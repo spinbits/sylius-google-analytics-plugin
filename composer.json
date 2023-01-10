@@ -45,7 +45,7 @@
         "symfony/dotenv": "^5.4",
         "symfony/flex": "^2.2.2",
         "symfony/intl": "^5.4",
-        "symfony/web-profiler-bundle": "^5.4",
+        "symfony/web-profiler-bundle": "^6.1",
         "vimeo/psalm": "4.*"
     },
     "config": {
