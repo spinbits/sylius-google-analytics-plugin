@@ -10,15 +10,15 @@ declare(strict_types=1);
 
 namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Factory\Provider;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdIdProvider;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Core\Model\Channel;
 
-class GoogleTagIdIdProviderTest extends TestCase
+class GoogleTagIdProviderTest extends TestCase
 {
-    private GoogleTagIdIdProvider|MockObject $sut;
+    private GoogleTagIdProvider|MockObject $sut;
     private ChannelContextInterface|MockObject $channelContext;
 
     protected function setUp(): void
@@ -35,7 +35,7 @@ class GoogleTagIdIdProviderTest extends TestCase
             ->method('getChannel')
             ->willReturn($channel);
 
-        $this->sut = new GoogleTagIdIdProvider($this->channelContext, 'id', ['CHANNEL' => 'some-id']);
+        $this->sut = new GoogleTagIdProvider($this->channelContext, 'id', ['CHANNEL' => 'some-id']);
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class GoogleTagIdIdProviderTest extends TestCase
     /** @test */
     public function testProvidePerDefault()
     {
-        $this->sut = new GoogleTagIdIdProvider($this->channelContext, 'id', ['OTHER' => 'some-id']);
+        $this->sut = new GoogleTagIdProvider($this->channelContext, 'id', ['OTHER' => 'some-id']);
         $this->assertSame('id', $this->sut->provide());
     }
 }

@@ -13,7 +13,7 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Provider;
 
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 
-class GoogleTagIdIdProvider implements GoogleTagIdProviderInterface
+class GoogleTagIdProvider implements GoogleTagIdProviderInterface
 {
     public function __construct(
         private ChannelContextInterface $channelContext,
