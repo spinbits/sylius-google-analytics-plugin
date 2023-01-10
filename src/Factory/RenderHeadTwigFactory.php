@@ -10,16 +10,17 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
+use Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProviderInterface;
 use Twig\Environment;
 
 class RenderHeadTwigFactory
 {
     public function __construct(
-        private Environment $twig,
-        private string $id,
-        private string $additionalParams,
-        private string $templateName,
-        private bool $enabled
+        private GoogleTagIdProviderInterface $googleTagProvider,
+        private Environment                  $twig,
+        private string                       $additionalParams,
+        private string                       $templateName,
+        private bool                         $enabled,
     ) {
         $this->additionalParams = $additionalParams ? '&'.trim($additionalParams,'&') : '';
     }
@@ -28,7 +29,7 @@ class RenderHeadTwigFactory
     {
         return !$this->enabled ? '' : $this->twig->render(
             $this->templateName, [
-                'id' => $this->id,
+                'id' => $this->googleTagProvider->provide(),
                 'url_suffix' => $this->additionalParams
             ]
         );

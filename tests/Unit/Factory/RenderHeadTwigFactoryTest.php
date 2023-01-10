@@ -13,6 +13,9 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProviderInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Core\Model\Channel;
 use Twig\Environment;
 
 class RenderHeadTwigFactoryTest extends TestCase
@@ -23,16 +26,32 @@ class RenderHeadTwigFactoryTest extends TestCase
     /** @var MockObject|Environment */
     private MockObject $twig;
 
+    /** @var MockObject|GoogleTagIdProviderInterface */
+    private MockObject $googleTagIdProvider;
+
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->twig = $this->createMock(Environment::class);
-        $this->sut = new RenderHeadTwigFactory($this->twig, 'id', 'param', 'template', true);
+        $this->googleTagIdProvider = $this->createMock(GoogleTagIdProviderInterface::class);
+
+        $this->sut = new RenderHeadTwigFactory(
+            $this->googleTagIdProvider,
+            $this->twig,
+            'param',
+            'template',
+            true,
+        );
     }
 
     public function testRenderEnabled()
     {
+        $this->googleTagIdProvider
+            ->expects($this->once())
+            ->method('provide')
+            ->willReturn('id');
+
         $this->twig
             ->expects($this->once())
             ->method('render')
@@ -45,7 +64,12 @@ class RenderHeadTwigFactoryTest extends TestCase
 
     public function testRenderDisabled()
     {
-        $this->sut = new RenderHeadTwigFactory($this->twig, '', '', '', false);
+        $this->sut = new RenderHeadTwigFactory($this->googleTagIdProvider, $this->twig, '', '', false);
+
+        $this->googleTagIdProvider
+            ->expects($this->never())
+            ->method('provide');
+
         $this->twig
             ->expects($this->never())
             ->method('render')

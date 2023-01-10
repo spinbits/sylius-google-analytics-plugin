@@ -13,10 +13,14 @@ services:
 
     Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory:
         arguments:
-            $id: '%spinbits_sylius_google_analytics4.id%'
             $enabled: '%spinbits_sylius_google_analytics4.enabled%'
             $additionalParams: '%spinbits_sylius_google_analytics4.additionalParameters%'
             $templateName: '%spinbits_sylius_google_analytics4.templateName%'
+            
+    Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProvider:
+        arguments:
+            $defaultId: '%spinbits_sylius_google_analytics4.id%'
+            $channelsIds: '%spinbits_sylius_google_analytics4.channels_ids%'
             
     Spinbits\SyliusGoogleAnalytics4Plugin\EventListener\RenderViewListener:
         tags:
