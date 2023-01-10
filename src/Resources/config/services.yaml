@@ -19,7 +19,7 @@ services:
             
     Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProvider:
         arguments:
-            $id: '%spinbits_sylius_google_analytics4.id%'
+            $defaultId: '%spinbits_sylius_google_analytics4.id%'
             $channelsIds: '%spinbits_sylius_google_analytics4.channels_ids%'
             
     Spinbits\SyliusGoogleAnalytics4Plugin\EventListener\RenderViewListener:
