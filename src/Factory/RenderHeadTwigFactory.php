@@ -10,20 +10,17 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 
-use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProviderInterface;
 use Twig\Environment;
 
 class RenderHeadTwigFactory
 {
     public function __construct(
-        private ChannelContextInterface $channelContext,
-        private Environment $twig,
-        private string $id,
-        private string $additionalParams,
-        private string $templateName,
-        private bool $enabled,
-        /** @var array<string, string>|string[]|null */
-        private ?array $channelsIds = null
+        private GoogleTagIdProviderInterface $googleTagProvider,
+        private Environment                  $twig,
+        private string                       $additionalParams,
+        private string                       $templateName,
+        private bool                         $enabled,
     ) {
         $this->additionalParams = $additionalParams ? '&'.trim($additionalParams,'&') : '';
     }
@@ -32,27 +29,9 @@ class RenderHeadTwigFactory
     {
         return !$this->enabled ? '' : $this->twig->render(
             $this->templateName, [
-                'id' => $this->resolveGtagId($this->id, $this->channelsIds),
+                'id' => $this->googleTagProvider->provide(),
                 'url_suffix' => $this->additionalParams
             ]
         );
-    }
-
-    /**
-     * @param string $defaultId
-     * @param array<string, string>|string[]|null $channelsIds
-     * @return string
-     */
-    private function resolveGtagId(string $defaultId, ?array $channelsIds): string
-    {
-        if (is_array($channelsIds)) {
-            foreach ($channelsIds as $channelCode => $id) {
-                if ($this->channelContext->getChannel()->getCode() === $channelCode) {
-                    return $id;
-                }
-            }
-        }
-
-        return $defaultId;
     }
 }
