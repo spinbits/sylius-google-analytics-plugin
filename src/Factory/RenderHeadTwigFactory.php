@@ -13,7 +13,7 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProviderInterface;
 use Twig\Environment;
 
-class RenderHeadTwigFactory
+class RenderHeadTwigFactory implements RenderHeadTwigFactoryInterface
 {
     public function __construct(
         private GoogleTagIdProviderInterface $googleTagProvider,

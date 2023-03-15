@@ -18,7 +18,7 @@ use Spinbits\GoogleAnalytics4EventsDtoS\Events\AddShippingInfo;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\BeginCheckout;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\Purchase;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\ItemsContainerInterface;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryInterface;
 use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\ShipmentInterface;
@@ -29,7 +29,7 @@ class CheckoutEventFactory
 {
     public function __construct(
         private CartContextInterface $cartContext,
-        private ItemFactory $itemFactory
+        private ItemFactoryInterface $itemFactory
     ) {
     }
 

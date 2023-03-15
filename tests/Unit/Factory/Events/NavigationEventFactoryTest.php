@@ -14,7 +14,7 @@ use Spinbits\GoogleAnalytics4EventsDtoS\Item\Item;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\NavigationEventFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryInterface;
 use Sylius\Component\Core\Model\Product;
 
 class NavigationEventFactoryTest extends TestCase
@@ -22,13 +22,13 @@ class NavigationEventFactoryTest extends TestCase
     /** @var NavigationEventFactory */
     private $sut;
 
-    /** @var ItemFactory | MockObject  */
-    private ItemFactory $itemFactory;
+    /** @var ItemFactoryInterface | MockObject  */
+    private ItemFactoryInterface $itemFactory;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->itemFactory = $this->createMock(ItemFactory::class);
+        $this->itemFactory = $this->createMock(ItemFactoryInterface::class);
 
         $this->sut = new NavigationEventFactory($this->itemFactory);
     }

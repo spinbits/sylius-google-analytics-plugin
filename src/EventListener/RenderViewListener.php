@@ -10,12 +10,12 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactoryInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class RenderViewListener
 {
-    public function __construct(private RenderHeadTwigFactory $renderTwig)
+    public function __construct(private RenderHeadTwigFactoryInterface $renderTwig)
     {
     }
 

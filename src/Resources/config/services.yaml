@@ -11,13 +11,15 @@ services:
             - '../../Entity/'
             - '../../Kernel.php'
 
-    Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory:
+    Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactoryInterface:
+        class: Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory
         arguments:
             $enabled: '%spinbits_sylius_google_analytics4.enabled%'
             $additionalParams: '%spinbits_sylius_google_analytics4.additionalParameters%'
             $templateName: '%spinbits_sylius_google_analytics4.templateName%'
             
-    Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProvider:
+    Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProviderInterface:
+        class: Spinbits\SyliusGoogleAnalytics4Plugin\Provider\GoogleTagIdProvider
         arguments:
             $defaultId: '%spinbits_sylius_google_analytics4.id%'
             $channelsIds: '%spinbits_sylius_google_analytics4.channels_ids%'
@@ -26,10 +28,14 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
             
-    Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory:
+    Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryInterface:
+        class: Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory
         arguments:
             $productVariantResolver: '@sylius.product_variant_resolver.default'
             
+    Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryFromProductVariantInterface:
+        class: Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryFromProductVariant    
+    
     Spinbits\SyliusGoogleAnalytics4Plugin\Factory\EventsBagSessionFactory:
         decorates: session.factory
         arguments: ['@.inner']
