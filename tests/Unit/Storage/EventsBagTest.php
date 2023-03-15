@@ -26,7 +26,7 @@ class EventsBagTest extends TestCase
     }
 
     /** @test */
-    public function testGetEvents()
+    public function testGetEvents(): void
     {
         $result = $this->sut->getEvents();
 
@@ -34,11 +34,12 @@ class EventsBagTest extends TestCase
     }
 
     /** @test */
-    public function testSetEvents()
+    public function testSetEvents(): void
     {
-        $this->sut->set('example_event', (new Login()));
+        $event = new Login();
+        $this->sut->setEvent($event);
         $result = $this->sut->getEvents();
 
-        $this->assertEqualsCanonicalizing([[0]], $result);
+        $this->assertEqualsCanonicalizing([[0 => $event]], $result);
     }
 }
