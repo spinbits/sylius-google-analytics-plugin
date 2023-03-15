@@ -13,14 +13,14 @@ namespace Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\AddToCart;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\RemoveFromCart;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\ViewCart;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
 
 class CartEventFactory
 {
     public function __construct(
-        private ItemFactory $itemFactory,
+        private ItemFactoryInterface $itemFactory,
         private CartContextInterface $cartContext
     ) {
     }

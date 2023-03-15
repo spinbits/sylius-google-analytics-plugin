@@ -14,13 +14,13 @@ use Spinbits\GoogleAnalytics4EventsDtoS\Events\Search;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\ViewItem;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\ViewItemList;
 use Spinbits\GoogleAnalytics4EventsDtoS\Events\ItemsContainerInterface;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Product\Model\ProductInterface as ProdProductInterface;
 
 class NavigationEventFactory
 {
-    public function __construct(private ItemFactory $itemFactory)
+    public function __construct(private ItemFactoryInterface $itemFactory)
     {
     }
 
