@@ -15,14 +15,13 @@ use Spinbits\GoogleAnalytics4EventsDtoS\Item\Item;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\CheckoutEventFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryInterface;
 use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\PaymentMethod;
 use Sylius\Component\Core\Model\Promotion;
-use Sylius\Component\Core\Model\Shipment;
 use Sylius\Component\Order\Context\CartContextInterface;
 use Sylius\Component\Shipping\Model\ShipmentInterface;
 use Sylius\Component\Shipping\Model\ShippingMethodInterface;
@@ -35,15 +34,15 @@ class CheckoutEventFactoryTest extends TestCase
     /** @var CartContextInterface | MockObject */
     private CartContextInterface $cartContext;
 
-    /** @var ItemFactory | MockObject */
-    private ItemFactory $itemFactory;
+    /** @var ItemFactoryInterface | MockObject */
+    private ItemFactoryInterface $itemFactory;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->cartContext = $this->createMock(CartContextInterface::class);
-        $this->itemFactory = $this->createMock(ItemFactory::class);
+        $this->itemFactory = $this->createMock(ItemFactoryInterface::class);
 
         $this->sut = new CheckoutEventFactory(
             $this->cartContext,

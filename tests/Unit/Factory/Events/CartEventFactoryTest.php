@@ -12,11 +12,11 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Unit\Factory\Events;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Spinbits\GoogleAnalytics4EventsDtoS\Item\Item;
-use Spinbits\GoogleAnalytics4EventsDtoS\Item\ItemInterface;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\CartEventFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactory;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\ItemFactoryInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
@@ -26,8 +26,8 @@ class CartEventFactoryTest extends TestCase
     /** @var CartEventFactory */
     private $sut;
 
-    /** @var ItemFactory|MockObject  */
-    private ItemFactory $itemFactory;
+    /** @var ItemFactoryInterface|MockObject  */
+    private ItemFactoryInterface $itemFactory;
 
     /** @var CartContextInterface|MockObject */
     private CartContextInterface $cartContext;
@@ -35,7 +35,7 @@ class CartEventFactoryTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->itemFactory = $this->createMock(ItemFactory::class);
+        $this->itemFactory = $this->createMock(ItemFactoryInterface::class);
         $this->cartContext = $this->createMock(CartContextInterface::class);
 
         $item = $this->createMock(Item::class);
@@ -57,7 +57,7 @@ class CartEventFactoryTest extends TestCase
     }
 
     /** @test */
-    public function testViewCart()
+    public function testViewCart(): void
     {
         $result = $this->sut->viewCart();
 
@@ -66,7 +66,7 @@ class CartEventFactoryTest extends TestCase
     }
 
     /** @test */
-    public function testAddToCart()
+    public function testAddToCart(): void
     {
         $orderItem = $this->createMock(OrderItemInterface::class);
         $result = $this->sut->addToCart($orderItem);
@@ -76,7 +76,7 @@ class CartEventFactoryTest extends TestCase
     }
 
     /** @test */
-    public function testRemoveFromCart()
+    public function testRemoveFromCart(): void
     {
         $orderItem = $this->createMock(OrderItemInterface::class);
         $result = $this->sut->removeFromCart($orderItem);
