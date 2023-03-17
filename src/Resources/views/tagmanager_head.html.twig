@@ -19,6 +19,6 @@
                 gtag("event", "{{ event }}", {{ c|raw }});
             {% endfor %}
         {% endfor %}
-        console.log({{ events|json_encode|raw }})
+        {# console.log({{ events|json_encode|raw }}) #}
     {% endif %}
 </script>
