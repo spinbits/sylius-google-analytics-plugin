@@ -93,7 +93,7 @@ class NavigationEventListener implements EventSubscriberInterface
     private function getSearchTerm(Request $request): ?string
     {
         /** @var array<string, array<string, string|null|int>> $criteria */
-        $criteria = (array) $request->query->get('criteria');
+        $criteria = (array) $request->query->all('criteria');
         return (isset($criteria['search']['value']))
             ? (string) $criteria['search']['value']
             : null;
