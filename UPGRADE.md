@@ -1,3 +1,8 @@
+# UPGRADE FROM `1.1` TO `1.2`
+
+## Changes
+* Added Symfony 6 support
+
 # UPGRADE FROM `1.0` TO `1.1`
 
 ## Changes
