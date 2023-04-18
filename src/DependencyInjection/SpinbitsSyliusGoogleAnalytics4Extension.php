@@ -32,7 +32,7 @@ final class SpinbitsSyliusGoogleAnalytics4Extension extends Extension
         return new Configuration();
     }
 
-    public function getAlias()
+    public function getAlias(): string
     {
         return 'spinbits_sylius_google_analytics4';
     }
