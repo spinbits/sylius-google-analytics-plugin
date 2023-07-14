@@ -29,7 +29,6 @@ class RenderHeadTwigFactory
     {
         return !$this->enabled ? '' : $this->twig->render(
             $this->templateName, [
-                'id' => $this->googleTagProvider->provide(),
                 'url_suffix' => $this->additionalParams
             ]
         );

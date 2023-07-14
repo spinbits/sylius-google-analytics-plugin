@@ -17,7 +17,6 @@ class GoogleTagIdProvider implements GoogleTagIdProviderInterface
 {
     public function __construct(
         private ChannelContextInterface $channelContext,
-        private string $defaultId,
         /** @var array<string, string>|string[]|null $channelsIds */
         private ?array $channelsIds = null
     ) {
@@ -32,7 +31,6 @@ class GoogleTagIdProvider implements GoogleTagIdProviderInterface
                 }
             }
         }
-        return $this->defaultId;
     }
 
 }

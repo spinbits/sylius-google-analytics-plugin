@@ -49,8 +49,8 @@ class ItemFactory
         $mainTaxon = $product?->getMainTaxon();
 
         return new Item(
-            (string) $variant->getId(),
-            (string) $variant->getCode(),
+            (string) $product->getCode(),
+            (string) $product->getName(),
             round($price/100, 2),
             $this->currencyContext->getCurrencyCode(),
             0,
