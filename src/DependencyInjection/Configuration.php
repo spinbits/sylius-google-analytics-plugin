@@ -19,7 +19,6 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('id')->end()
             ->booleanNode('enabled')->defaultTrue()->end()
             ->scalarNode('additionalParameters')->defaultValue('')->end()
             ->scalarNode('templateName')->defaultValue('@SpinbitsSyliusGoogleAnalytics4Plugin/tagmanager_head.html.twig')->end()
