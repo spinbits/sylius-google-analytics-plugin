@@ -10,11 +10,12 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\AuthEventFactory;
+use Sylius\Bundle\UserBundle\Event\UserEvent;
+use Symfony\Component\EventDispatcher\GenericEvent;
 use Spinbits\SyliusGoogleAnalytics4Plugin\Storage\EventsBag;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\Events\AuthEventFactory;
 
 class AuthEventListener implements EventSubscriberInterface
 {
@@ -41,7 +42,7 @@ class AuthEventListener implements EventSubscriberInterface
         );
     }
 
-    public function login(GenericEvent $event): void
+    public function login(UserEvent $event): void
     {
         $this->eventsStorage->setEvent(
             $this->authEventFactory->login()

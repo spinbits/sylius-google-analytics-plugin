@@ -51,10 +51,11 @@ class CartEventListener implements EventSubscriberInterface
     public function onKernelRequest(ControllerArgumentsEvent $event): void
     {
         /**
-         * @psalm-suppress MixedArgument
          * @psalm-suppress MixedAssignment
+         * @psalm-suppress MixedArgument
+         * @phpstan-ignore-next-line
          */
-        $routeName = strval($event->getRequest()->attributes->get('_route'));
+        $routeName = strval( $event->getRequest()->attributes->get('_route'));
 
         if (!$event->isMainRequest()
             || !\is_array($event->getController())
