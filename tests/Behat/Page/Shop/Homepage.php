@@ -12,7 +12,7 @@ namespace Tests\Spinbits\SyliusGoogleAnalytics4Plugin\Behat\Page\Shop;
 
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPage;
 
-class Homepage extends SymfonyPage
+class Homepage extends SymfonyPage implements HomepageInterface
 {
     public function contains(string $string): bool
     {
