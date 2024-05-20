@@ -10,8 +10,10 @@ declare(strict_types=1);
 
 namespace Spinbits\SyliusGoogleAnalytics4Plugin\EventListener;
 
-use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Spinbits\SyliusGoogleAnalytics4Plugin\Factory\RenderHeadTwigFactory;
 
 class RenderViewListener
 {
@@ -22,6 +24,14 @@ class RenderViewListener
     public function onKernelResponse(ResponseEvent $event): void
     {
         if (!$this->isAllowed($event)) {
+            return;
+        }
+
+        if ($event->getResponse() instanceof BinaryFileResponse) {
+            return;
+        }
+
+        if ($event->getResponse() instanceof StreamedResponse) {
             return;
         }
 
