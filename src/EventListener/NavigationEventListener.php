@@ -54,7 +54,7 @@ class NavigationEventListener implements EventSubscriberInterface
             return;
         }
 
-        if ($searchTerm = $this->getSearchTerm($event->getRequest())) {
+        if (null !== $searchTerm = $this->getSearchTerm($event->getRequest())) {
             $this->eventsStorage->setEvent(
                 $this->navEventFactory->search($searchTerm)
             );
